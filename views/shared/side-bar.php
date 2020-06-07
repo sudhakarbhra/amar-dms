@@ -39,7 +39,7 @@
                   <div class="sub-menu">
                      <li >
                         <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Models</span>
+                         <span class="nav-text">Models</span>
                         </a>
                      </li>
                      <li >
@@ -66,6 +66,21 @@
            
          </ul>
       </div>
+
+
+      <div class="sidebar-footer">
+         <hr class="separator mb-0" />
+         <a class="text-light" href="logout">
+            <div class="sidebar-footer-content">
+               <h6 class="text-uppercase">
+                  Logout <span class="float-right"><i class="mdi mdi-logout"></i></span>
+               </h6>
+            </div>
+         </a>
+      </div>
+
+
+
 
    </div>
 </aside>
