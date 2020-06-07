@@ -67,12 +67,7 @@
                   <div class="sub-menu">
                      <li >
                         <a class="sidenav-item-link" href="#">
-                         <span class="nav-text">New Receipt</span>
-                        </a>
-                     </li>
-                     <li >
-                        <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Receipts</span>
+                        <span class="nav-text">All Receipts</span>
                         </a>
                      </li>
                   </div>
@@ -90,12 +85,7 @@
                   <div class="sub-menu">
                      <li >
                         <a class="sidenav-item-link" href="#">
-                         <span class="nav-text">New Member</span>
-                        </a>
-                     </li>
-                     <li >
-                        <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Members</span>
+                        <span class="nav-text">All Members</span>
                         </a>
                      </li>
                   </div>
