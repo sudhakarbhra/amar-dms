@@ -27,14 +27,19 @@
       <div class="sidebar-scrollbar">
          <!-- sidebar menu -->
          <ul class="nav sidebar-inner" id="sidebar-menu">
-          
+         <li>
+              <a class="sidenav-item-link" href="javascript:void(0)">
+               <i class="mdi mdi-view-dashboard-outline"></i>
+               <span class="nav-text">Dashboard</span>
+            </a>
+         </li>
             <li  class="has-sub" >
-               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#app"
-                  aria-expanded="false" aria-controls="app">
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appOne"
+                  aria-expanded="false" aria-controls="appOne">
                <i class="mdi mdi-motorbike"></i>
                <span class="nav-text">Inventory</span> <b class="caret"></b>
                </a>
-               <ul  class="collapse"  id="app"
+               <ul  class="collapse"  id="appOne"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >
@@ -47,40 +52,70 @@
                         <span class="nav-text">Colors</span>
                         </a>
                      </li>
+                  </div>
+               </ul>
+
+            </li>
+            <li  class="has-sub" >
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appTwo"
+                  aria-expanded="false" aria-controls="appTwo">
+               <i class="mdi mdi-file-document-outline"></i>
+               <span class="nav-text">Recipts</span> <b class="caret"></b>
+               </a>
+               <ul  class="collapse"  id="appTwo"
+                  data-parent="#sidebar-menu">
+                  <div class="sub-menu">
                      <li >
                         <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Team</span>
+                         <span class="nav-text">New Receipt</span>
                         </a>
                      </li>
                      <li >
                         <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Calendar</span>
+                        <span class="nav-text">Receipts</span>
                         </a>
-
-
-                        
                      </li>
                   </div>
                </ul>
+               
+            </li>
+            <li  class="has-sub" >
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appThree"
+                  aria-expanded="false" aria-controls="appThree">
+               <i class="mdi mdi-account-group-outline"></i>
+               <span class="nav-text">Teams</span> <b class="caret"></b>
+               </a>
+               <ul  class="collapse"  id="appThree"
+                  data-parent="#sidebar-menu">
+                  <div class="sub-menu">
+                     <li >
+                        <a class="sidenav-item-link" href="#">
+                         <span class="nav-text">New Member</span>
+                        </a>
+                     </li>
+                     <li >
+                        <a class="sidenav-item-link" href="#">
+                        <span class="nav-text">Members</span>
+                        </a>
+                     </li>
+                  </div>
+               </ul>
+               
             </li>
            
          </ul>
       </div>
 
-
       <div class="sidebar-footer">
          <hr class="separator mb-0" />
-         <a class="text-light" href="logout">
-            <div class="sidebar-footer-content">
+         <div class="sidebar-footer-content">
+            <a  class="text-light" href="logout">
                <h6 class="text-uppercase">
-                  Logout <span class="float-right"><i class="mdi mdi-logout"></i></span>
+               Logout <span class="float-right"><i class="mdi mdi-logout"></i></span>
                </h6>
-            </div>
-         </a>
+            </a>
+         </div>
       </div>
-
-
-
 
    </div>
 </aside>
