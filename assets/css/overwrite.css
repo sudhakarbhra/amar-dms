@@ -1,4 +1,14 @@
 
-    .sidebar-fixed-offcanvas .sidebar-with-footer, .sidebar-fixed .sidebar-with-footer {
-        padding-bottom: 0;
-    }
+.sidebar-fixed-offcanvas .sidebar-with-footer, .sidebar-fixed .sidebar-with-footer {
+    padding-bottom: 0;
+}
+.login-alert{
+  display:none;
+}
+.reveal {
+	background: none;
+	border: 1px solid;
+	border-color: #e5e9f2;
+	padding: 0.5rem 0.8rem;
+	font-size: 18px;
+}

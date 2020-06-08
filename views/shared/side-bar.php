@@ -84,7 +84,7 @@
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >
-                        <a class="sidenav-item-link" href="#">
+                        <a class="sidenav-item-link" href="./members.php">
                         <span class="nav-text">All Members</span>
                         </a>
                      </li>
@@ -99,7 +99,7 @@
       <div class="sidebar-footer">
          <hr class="separator mb-0" />
          <div class="sidebar-footer-content">
-            <a  class="text-light" href="logout">
+            <a  class="text-light" href="./logout.php">
                <h6 class="text-uppercase">
                Logout <span class="float-right"><i class="mdi mdi-logout"></i></span>
                </h6>

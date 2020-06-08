@@ -1,3 +1,8 @@
+<?php 
+require_once "./app/config.php"; 
+require_once "./login-check.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>

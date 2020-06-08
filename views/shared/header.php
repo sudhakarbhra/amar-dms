@@ -26,24 +26,24 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
             <li class="dropdown-header">You have 5 notifications</li>
-            <li>
-            <a href="#">
-                <i class="mdi mdi-account-plus"></i> New user registered
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-            </a>
-            </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-account-plus"></i> New user registered
+                        <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
+                    </a>
+                </li>
             <li>
             <a href="#">
                 <i class="mdi mdi-account-remove"></i> User deleted
                 <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 07 AM</span>
             </a>
             </li>
-            <li>
-            <a href="#">
-                <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 12 PM</span>
-            </a>
-            </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
+                        <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 12 PM</span>
+                    </a>
+                </li>
             <li>
             <a href="#">
                 <i class="mdi mdi-account-supervisor"></i> New client
@@ -51,10 +51,10 @@
             </a>
             </li>
             <li>
-            <a href="#">
-                <i class="mdi mdi-server-network-off"></i> Server overloaded
-                <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 05 AM</span>
-            </a>
+                <a href="#">
+                    <i class="mdi mdi-server-network-off"></i> Server overloaded
+                    <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 05 AM</span>
+                </a>
             </li>
             <li class="dropdown-footer">
             <a class="text-center" href="#"> View All </a>
@@ -62,42 +62,51 @@
         </ul>
         </li>
         <li class="right-sidebar-in right-sidebar-2-menu">
-        <i class="mdi mdi-settings mdi-spin"></i>
+            <i class="mdi mdi-settings mdi-spin"></i>
         </li>
         <!-- User Account -->
         <li class="dropdown user-menu">
         <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-            <img src="assets/img/user/user.png" class="user-image" alt="User Image" />
-            <span class="d-none d-lg-inline-block">Abdus Salam</span>
+            <svg  data-jdenticon-value="<?=$_SESSION["email"]?>" 
+              class="img-fluid rounded" 
+              alt="<?=$_SESSION["username"]?>" 
+              width="65" height="65">
+            Fallback text or image for browsers not supporting inline svg.
+        </svg>
+            <span class="d-none text-capitalize d-lg-inline-block"><?=$_SESSION["firstName"]." ".$_SESSION["lastName"]?></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
             <!-- User image -->
-            <li class="dropdown-header">
-            <img src="assets/img/user/user.png" class="img-circle" alt="User Image" />
-            <div class="d-inline-block">
-                Abdus Salam <small class="pt-1">iamabdus@gmail.com</small>
-            </div>
+            <li class="dropdown-header d-flex">
+                 <svg  data-jdenticon-value="<?=$_SESSION["email"]?>" 
+                      class="img-circle mr-1"
+                      alt="<?=$_SESSION["username"]?>" 
+                      width="45" height="45">
+                    Fallback text or image for browsers not supporting inline svg.
+                </svg>
+                <div class="d-inline-block">
+                    <?=$_SESSION["firstName"]." ".$_SESSION["lastName"]?><small class="pt-1"><?=$_SESSION["email"]?></small>
+                </div>
             </li>
 
             <li>
-            <a href="user-profile.html">
-                <i class="mdi mdi-account"></i> My Profile
-            </a>
+                <a href="user-profile.html">
+                    <i class="mdi mdi-account"></i> My Profile
+                </a>
             </li>
             <li>
-            <a href="#">
-                <i class="mdi mdi-email"></i> Message
-            </a>
+                <a href="#">
+                    <i class="mdi mdi-email"></i> Message
+                </a>
             </li>
             <li>
-            <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+                <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
             </li>
             <li class="right-sidebar-in">
-            <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
+                <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
             </li>
-
             <li class="dropdown-footer">
-            <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                <a href="logout.php"> <i class="mdi mdi-logout"></i> Log Out </a>
             </li>
         </ul>
         </li>

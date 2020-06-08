@@ -13,20 +13,18 @@ use Medoo\Medoo;
 
 // https://auth-db132.hostinger.com/db_structure.php?server=1&db=u330404416_ndi
 // LOCAL CONSTANTS
-define("DBNAME", "natio33v_v2_ndi");
+define("DBNAME", "amar-dms");
 define("DBSERVER", "localhost");
-define("DBUSER", "natio33v_v2_ndi");
-define("DBPASS", "Simple@123");
+define("DBUSER", "root");
+define("DBPASS", "");
 
-define("URL", "nationaldefenceinstitute.in/v2/ndi/");
-define("BASE_URL", "http://nationaldefenceinstitute.in/v2/ndi/");
-define("BASE_URL_ADMIN", "http://nationaldefenceinstitute.in/v2/ndi/admin/");
-define("BASE_URL_API", "http://nationaldefenceinstitute.in/v2/ndi/app/api/");
+define("URL", "amar-dms/");
+define("BASE_URL", "http://localhost/amar-dms/");
+define("BASE_URL_ADMIN", "http://localhost/amar-dms/admin/");
+define("BASE_URL_API", "http://localhost/amar-dms/app/api/");
 
-define("FILE_UPLOAD", "http://nationaldefenceinstitute.in/v2/ndi/uploads/upload.php");
-define("BASE_URL_UPLOAD", "http://nationaldefenceinstitute.in/v2/ndi/uploads/");
-define("BASE_URL_UPLOAD_DOCUMENTS", "http://ndi.endln.com/");
-define("BASE_URL_UPLOAD_IMAGES", "http://ndi.endln.com/");
+define("FILE_UPLOAD", "http://localhost/amar-dms/uploads/upload.php");
+define("BASE_URL_UPLOAD", "http://localhost/amar-dms/uploads/");
 
 
 date_default_timezone_set("Asia/Calcutta");

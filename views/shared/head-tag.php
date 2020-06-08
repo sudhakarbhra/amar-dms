@@ -19,6 +19,8 @@
 <!-- FAVICON -->
 <link href="assets/img/favicon.png" rel="shortcut icon" />
 
+<!-- TOASTR -->
+<link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet"></link>
 <!--
 HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
 -->

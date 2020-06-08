@@ -2,6 +2,11 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
+require_once "./app/classes/Account.class.php";
+
+$Account  = new AccountClass($database);
+$users = $Account -> fetchUsers();
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +27,7 @@ require_once "./login-check.php";
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <!-- Paste Everything that are inside content class  -->
+                    <?php include_once "./views/members/members.php"; ?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -32,7 +37,6 @@ require_once "./login-check.php";
         <?php include "./views/shared/footer.php"; ?>
     </div>
     <?php include "./views/shared/script-tag.php"; ?>
-
 
 </body>
 </html>
