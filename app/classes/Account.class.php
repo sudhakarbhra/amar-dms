@@ -14,7 +14,11 @@ class AccountClass
   
 
     function fetchUsers(){
-    	return $this->conn->select($this->_ACCOUNT, "*");
+    	return $this->conn->select($this->_ACCOUNT, "*", ["ORDER" => ["createdAt" => "DESC"]]);
+    }
+    
+    function getUser($req){
+        return $this->conn->get($this->_ACCOUNT, "*", ["id" => $req]);
     }
 
     function createUser($req){
@@ -27,11 +31,11 @@ class AccountClass
 	    $password 	= cleanMe($req["password"]);
 
 	    if(empty($uName) || empty($email) || empty($password)){
-			return array( "success" => 0,"msg" => 'Username Or Email or Password Missing !!',"debug" => $this->conn->log());
+			return array( "success" => 0,"msg" => 'Username Or Email or Password Missing !!');
 		}
 		        
 		if ($this->conn->has($this->_ACCOUNT,["OR" =>["email"=>$email,"name" => $uName]])) {
-	        return array("success" => 0, "msg" => 'Email or Username already exists',"debug" => $this->conn->log());
+	        return array("success" => 0, "msg" => 'Email or Username already exists');
     	} else {
 
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -47,7 +51,7 @@ class AccountClass
             "passString"=> $password,
             "token" 	=> $verifytoken,
         ]);
-        return array("success" => 1,"msg" => 'Your Account is created successfully!!',"debug" => $this->conn->log());
+        return array("success" => 1,"msg" => 'Your Account is created successfully!!');
 	    }
 	}
 
@@ -61,7 +65,7 @@ class AccountClass
 	    $password 	= cleanMe($req["password"]);
 
 	    if(empty($uName) || empty($email) || empty($password)){
-			return array( "success" => 0,"msg" => 'Username Or Email or Password Missing !!',"debug" => $this->conn->log());
+			return array( "success" => 0,"msg" => 'Username Or Email or Password Missing !!');
     	} else {
 
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
@@ -79,13 +83,14 @@ class AccountClass
         ],[
         	"id" => $req["id"]
         ]);
-        return array("success" => 1,"msg" => 'Your Account is Updated successfully!!',"debug" => $this->conn->log());
+        return array("success" => 1,"msg" => 'Your Account is Updated successfully!!');
 	    }
 	}
 
-	function getUser($req){
-		return $this->conn->get($this->_ACCOUNT, "*", ["id" => $req]);
-	}
+    function deleteUser($req){
+        $this->conn->delete($this->_ACCOUNT, ["id" => cleanMe($req["id"])]);
+        return array("success" => 1, "msg" => "Account Deleted Successfully");
+    }
 
 
 

@@ -1,10 +1,23 @@
 <div class="row justify-content-center">
-  <div class="col-lg-6">
+  <div class="col-sm-12 col-md-10">
     <div class="card card-default">
-      <div class="card-header card-header-border-bottom">
+      <div class="card-header card-header-border-bottom d-flex justify-content-between">
         <h2 class="text-capitalize"><?=$_GET["action"]?> New Member</h2>
+         <a 
+        data-delete="<?=$user["id"]?>" 
+        href="javascript:void(0)" 
+        class="deletePost btn btn-danger btn-sm "
+        data-toggle="tooltip"
+        date-placement="top"
+        data-original-title = "Delete <?=$user["name"]?>"
+        >
+        <i class="mdi mdi-trash-can-outline"></i> Delete
+      </a>
       </div>
       <div class="card-body">
+      <?php if($_SESSION["email"] == $user["email"]){ ?>
+        <div class="alert alert-danger" role="alert"><b>Note: </b>You will be logged off after editing your profile</div>
+      <?php } ?>
       <form id="formControl">
           <?php if($_GET["action"] == "edit"){ ?>
             <input type="hidden" name="action" value="editUser">
@@ -17,7 +30,7 @@
             <div class="form-group">
               <label for="firstName">First name</label>
               <input type="text" class="form-control" id="firstName" name="firstName" <?php if ($isEdit) {?>value="<?=$user["firstName"]?>"<?php }?>>
-            </div>
+            </div> 
           </div>
           <div class="col-lg-6">
             <div class="form-group">

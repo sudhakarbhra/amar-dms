@@ -2,13 +2,12 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
-require_once "./app/classes/Account.class.php";
+require_once "./app/classes/Bike.class.php";
 
-$Account  = new AccountClass($database);
-$users = $Account -> fetchUsers();
+$Bikes = new BikeClass($database);
+$bikes  = $Bikes->fetchBikes();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -27,7 +26,7 @@ $users = $Account -> fetchUsers();
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <?php include_once "./views/members/members.php"; ?>
+                    <?php include "./views/bikes/bikes-list.php";?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -36,7 +35,8 @@ $users = $Account -> fetchUsers();
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>
+    <?php include "./views/shared/script-tag.php"; ?>\
+
 <script type="text/javascript">
     $( ".deletePost" ).on( "click", function( event ) {
     event.preventDefault();
@@ -51,9 +51,9 @@ $users = $Account -> fetchUsers();
         if (willDelete) {
             $.ajax({
                         type: 'POST',
-                        url: '<?=BASE_URL_API?>account.php',
+                        url: '<?=BASE_URL_API?>bike.php',
                         data: {
-                        action:"deleteUser",
+                        action:"deleteBike",
                         id:$( this ).data("delete")
                         }
                     })

@@ -2,13 +2,16 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
-require_once "./app/classes/Account.class.php";
 
-$Account  = new AccountClass($database);
-$users = $Account -> fetchUsers();
+require_once "./app/classes/Bike.class.php";
 
+$Bike  = new BikeClass($database);
+$isEdit = false;
+if (isset($_GET["action"]) && $_GET["action"] == "edit") {
+    $bike = $Bike -> getBike(cleanMe($_GET["id"]));
+    $isEdit = true;
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -27,7 +30,7 @@ $users = $Account -> fetchUsers();
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <?php include_once "./views/members/members.php"; ?>
+                    <?php include "./views/bikes/bikes-form.php"; ?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -36,9 +39,35 @@ $users = $Account -> fetchUsers();
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>
+    <?php include "./views/shared/script-tag.php"; ?>\
 <script type="text/javascript">
-    $( ".deletePost" ).on( "click", function( event ) {
+  $(document).ready(function(){
+
+        // FORM SUBMISSION
+        $( "#savePost" ).on( "click", function( event ) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '<?=BASE_URL_API?>bike.php',
+            data: $( "#formControl" ).serialize()
+        })
+        .done(function(data){
+            data = JSON.parse(data);
+            if(data.success) {
+                toastr.success(data.msg);
+                $("input, textarea").val("");
+                window.history.back();
+            }else{
+                toastr.warning(data.msg);
+            } 
+        })
+        .fail(function(data){
+            data = JSON.parse(data);
+            toastr.error(data.msg);
+        });
+        return false;
+        });
+            $( ".deletePost" ).on( "click", function( event ) {
     event.preventDefault();
     swal({
         title: "Are you sure?",
@@ -51,9 +80,9 @@ $users = $Account -> fetchUsers();
         if (willDelete) {
             $.ajax({
                         type: 'POST',
-                        url: '<?=BASE_URL_API?>account.php',
+                        url: '<?=BASE_URL_API?>bike.php',
                         data: {
-                        action:"deleteUser",
+                        action:"deleteBike",
                         id:$( this ).data("delete")
                         }
                     })
@@ -61,7 +90,7 @@ $users = $Account -> fetchUsers();
                         data = JSON.parse(data);
                        if(data.success) {
                             toastr.success(data.msg);
-                            location.reload();
+                            window.history.back();
                         }else{
                             toastr.warning(data.msg);
                         } 
@@ -74,6 +103,8 @@ $users = $Account -> fetchUsers();
         });
     return false;
     });
+
+  });
 </script>
 </body>
 </html>

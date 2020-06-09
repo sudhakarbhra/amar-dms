@@ -66,11 +66,11 @@
         </li>
         <!-- User Account -->
         <li class="dropdown user-menu">
-        <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+        <button href="#" class="dropdown-toggle nav-link p-0" data-toggle="dropdown">
             <svg  data-jdenticon-value="<?=$_SESSION["email"]?>" 
               class="img-fluid rounded" 
               alt="<?=$_SESSION["username"]?>" 
-              width="65" height="65">
+              width="50" height="50">
             Fallback text or image for browsers not supporting inline svg.
         </svg>
             <span class="d-none text-capitalize d-lg-inline-block"><?=$_SESSION["firstName"]." ".$_SESSION["lastName"]?></span>

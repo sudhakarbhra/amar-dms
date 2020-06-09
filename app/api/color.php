@@ -1,14 +1,14 @@
 <?php
 include_once "../config.php";
-include_once "../classes/Account.class.php";
+include_once "../classes/Color.class.php";
 
-$Account = new AccountClass($database);
+$Color = new ColorClass($database);
 if (isset($_POST["action"])) {
 
     $req = $_POST;
     $moduleAction = cleanMe($_POST["action"]);
   
-    $response = $Account->$moduleAction($req);// moduleAction is equal to $_POST["action"]
+    $response = $Color->$moduleAction($req);// moduleAction is equal to $_POST["action"]
   
     echo json_encode($response);
     exit();

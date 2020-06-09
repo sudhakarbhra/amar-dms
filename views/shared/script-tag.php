@@ -4,6 +4,8 @@
 <script src="assets/js/sleek.bundle.js"></script>
 <script src="assets/plugins/toastr/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 
 <script type="text/javascript">
 $(document).ready(function(){

@@ -31,6 +31,17 @@
 <?php foreach ($users as $user) { ?>
   <div class="col-lg-6 col-xl-4">
     <div class="card card-default p-4">
+      <a 
+        data-delete="<?=$user["id"]?>" 
+        href="javascript:void(0)" 
+        class="deletePost btn btn-sm btn-default text-danger trash-icon"
+        data-toggle="tooltip"
+        date-placement="top"
+        data-original-title = "Delete <?=$user["name"]?>"
+        >
+        <i class="mdi mdi-trash-can-outline"></i>
+      </a>
+
       <a href="./members-form.php?action=edit&id=<?=$user["id"]?>" class="media text-secondary">
         <svg  data-jdenticon-value="<?=$user["email"]?>" 
               class="mr-3 img-fluid rounded" 

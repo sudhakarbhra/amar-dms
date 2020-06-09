@@ -2,13 +2,12 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
-require_once "./app/classes/Account.class.php";
+require_once "./app/classes/Color.class.php";
 
-$Account  = new AccountClass($database);
-$users = $Account -> fetchUsers();
+$Color = new ColorClass($database);
+$colors = $Color -> fetchColors();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -27,7 +26,7 @@ $users = $Account -> fetchUsers();
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <?php include_once "./views/members/members.php"; ?>
+                    <?php include "./views/colors/colors-list.php";?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -36,7 +35,7 @@ $users = $Account -> fetchUsers();
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>
+    <?php include "./views/shared/script-tag.php"; ?>\
 <script type="text/javascript">
     $( ".deletePost" ).on( "click", function( event ) {
     event.preventDefault();
@@ -51,9 +50,9 @@ $users = $Account -> fetchUsers();
         if (willDelete) {
             $.ajax({
                         type: 'POST',
-                        url: '<?=BASE_URL_API?>account.php',
+                        url: '<?=BASE_URL_API?>color.php',
                         data: {
-                        action:"deleteUser",
+                        action:"deleteColor",
                         id:$( this ).data("delete")
                         }
                     })
@@ -75,5 +74,6 @@ $users = $Account -> fetchUsers();
     return false;
     });
 </script>
+
 </body>
 </html>

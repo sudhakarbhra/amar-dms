@@ -23,7 +23,7 @@ if (isset($_POST)) {
 
                 setcookie("username", $username, time() + (86400 * 30), "/");
                 setcookie("token", $token, time() + (86400 * 30), "/");
-
+ 
                 echo true;
             } else {
                 echo '<div class="alert alert-danger" role="alert">Your account in active, <a href="contact-us.php">contact admin for help <i class="fa fa-angle-right"></i></a> </div>';

@@ -43,13 +43,13 @@
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >
-                        <a class="sidenav-item-link" href="#">
-                         <span class="nav-text">Models</span>
+                        <a class="sidenav-item-link" href="./bikes.php">
+                         <span class="nav-text">Bike Models</span>
                         </a>
                      </li>
                      <li >
-                        <a class="sidenav-item-link" href="#">
-                        <span class="nav-text">Colors</span>
+                        <a class="sidenav-item-link" href="./colors.php">
+                        <span class="nav-text">Bike Colors</span>
                         </a>
                      </li>
                   </div>
