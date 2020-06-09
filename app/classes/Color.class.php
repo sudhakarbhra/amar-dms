@@ -9,22 +9,22 @@ class ColorClass
         $this->conn = $db;
     }
 
-    private $_COLOR = "BIKE_COLOR";
+    private $_TABLE = "BIKE_COLORS";
 
   
 
     function fetchColors(){
-    	return $this->conn->select($this->_COLOR, "*", ["ORDER" => ["createdAt" => "DESC"]]);
+    	return $this->conn->select($this->_TABLE, "*", ["ORDER" => ["createdAt" => "DESC"]]);
     }
     
     function getColor($req){
-        return $this->conn->get($this->_COLOR, "*", ["id" => $req]);
+        return $this->conn->get($this->_TABLE, "*", ["id" => $req]);
     }
 
     function createColor($req){
     	
 
-        $this->conn->insert($this->_COLOR, [
+        $this->conn->insert($this->_TABLE, [
             "colorName" => cleanMe($req["colorName"]),
             "colorCode" => cleanMe($req["colorCode"])
         ]);
@@ -33,7 +33,7 @@ class ColorClass
 	}
 
     function editColor($req){
-    	$this->conn->update($this->_COLOR, [
+    	$this->conn->update($this->_TABLE, [
             "colorName" => cleanMe($req["colorName"]),
             "colorCode" => cleanMe($req["colorCode"])
         ],[
@@ -44,7 +44,7 @@ class ColorClass
 	}
 
     function deleteColor($req){
-        $this->conn->delete($this->_COLOR, ["id" => cleanMe($req["id"])]);
+        $this->conn->delete($this->_TABLE, ["id" => cleanMe($req["id"])]);
         return array("success" => 1, "msg" => "Color Deleted Successfully");
     }
 

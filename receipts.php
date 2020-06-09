@@ -2,6 +2,11 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
+require_once "./app/classes/Receipt.class.php";
+$Receipt = new ReceiptClass($database);
+
+$receipts = $Receipt->fetchReceipts();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -21,7 +26,7 @@ require_once "./login-check.php";
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <!-- Paste Everything that are inside content class  -->
+                    <?php include "./views/receipts/receipts-list.php";?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>

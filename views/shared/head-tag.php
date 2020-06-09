@@ -13,6 +13,12 @@
 <!-- PLUGINS CSS STYLE -->
 <link href="assets/plugins/nprogress/nprogress.css" rel="stylesheet" />
 
+<!-- DATATABLE CSS -->
+<link href="assets/plugins/data-tables/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<!-- BOOTSTRAP SELECT -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
 <!-- SLEEK CSS -->
 <link id="sleek-css" rel="stylesheet" href="assets/css/sleek.css" />
 

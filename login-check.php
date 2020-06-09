@@ -6,7 +6,7 @@ if (isset($_SESSION) && !empty($_SESSION)) {
     $session_username = $_SESSION["username"];
     $session_token = $_SESSION["token"];
 
-    $profile = $database->has("ACCOUNT", [
+    $profile = $database->has("ACCOUNTS", [
         "AND" => [
             "OR" => [
                 "name" => "$session_username",
@@ -20,7 +20,7 @@ if (isset($_SESSION) && !empty($_SESSION)) {
         header("Location: ./index.php");
 
     } elseif ($profile == true) {
-        $user = $database->get("ACCOUNT", ["id", "name", "email"], [
+        $user = $database->get("ACCOUNTS", ["id", "name", "email"], [
             "AND" => [
                 "OR" => [
                     "name" => "$session_username",

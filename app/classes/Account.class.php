@@ -9,16 +9,16 @@ class AccountClass
         $this->conn = $db;
     }
 
-    private $_ACCOUNT = "ACCOUNT";
+    private $_TABLE = "ACCOUNTS";
 
   
 
     function fetchUsers(){
-    	return $this->conn->select($this->_ACCOUNT, "*", ["ORDER" => ["createdAt" => "DESC"]]);
+    	return $this->conn->select($this->_TABLE, "*", ["ORDER" => ["createdAt" => "DESC"]]);
     }
     
     function getUser($req){
-        return $this->conn->get($this->_ACCOUNT, "*", ["id" => $req]);
+        return $this->conn->get($this->_TABLE, "*", ["id" => $req]);
     }
 
     function createUser($req){
@@ -34,13 +34,13 @@ class AccountClass
 			return array( "success" => 0,"msg" => 'Username Or Email or Password Missing !!');
 		}
 		        
-		if ($this->conn->has($this->_ACCOUNT,["OR" =>["email"=>$email,"name" => $uName]])) {
+		if ($this->conn->has($this->_TABLE,["OR" =>["email"=>$email,"name" => $uName]])) {
 	        return array("success" => 0, "msg" => 'Email or Username already exists');
     	} else {
 
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
         $verifytoken = md5(rand(0, 1000));
-        $this->conn->insert($this->_ACCOUNT, [
+        $this->conn->insert($this->_TABLE, [
             "name" 		=> $uName,
             "firstName" => $fName,
             "lastName" 	=> $lName,
@@ -70,7 +70,7 @@ class AccountClass
 
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
         $verifytoken = md5(rand(0, 1000));
-        $this->conn->update($this->_ACCOUNT, [
+        $this->conn->update($this->_TABLE, [
             "name" 		=> $uName,
             "firstName" => $fName,
             "lastName" 	=> $lName,
@@ -88,7 +88,7 @@ class AccountClass
 	}
 
     function deleteUser($req){
-        $this->conn->delete($this->_ACCOUNT, ["id" => cleanMe($req["id"])]);
+        $this->conn->delete($this->_TABLE, ["id" => cleanMe($req["id"])]);
         return array("success" => 1, "msg" => "Account Deleted Successfully");
     }
 

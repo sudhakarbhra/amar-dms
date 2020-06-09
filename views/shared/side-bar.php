@@ -66,7 +66,7 @@
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >
-                        <a class="sidenav-item-link" href="#">
+                        <a class="sidenav-item-link" href="./receipts.php">
                         <span class="nav-text">All Receipts</span>
                         </a>
                      </li>
