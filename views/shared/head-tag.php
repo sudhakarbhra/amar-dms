@@ -19,6 +19,9 @@
 <!-- BOOTSTRAP SELECT -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
+ <!-- Multi Select -->
+<link href="assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+
 <!-- SLEEK CSS -->
 <link id="sleek-css" rel="stylesheet" href="assets/css/sleek.css" />
 

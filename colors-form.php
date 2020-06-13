@@ -39,7 +39,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "edit") {
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>\
+    <?php include "./views/shared/script-tag.php"; ?>
 <script type="text/javascript">
   $(document).ready(function(){
 

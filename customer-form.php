@@ -2,19 +2,15 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
-require_once "./app/classes/Bike.class.php";
-require_once "./app/classes/Color.class.php";
 
-$Bike  = new BikeClass($database);
-$Color  = new ColorClass($database);
+require_once "./app/classes/Customer.class.php";
 
+$Customer  = new CustomerClass($database);
 $isEdit = false;
 if (isset($_GET["action"]) && $_GET["action"] == "edit") {
-    $bike = $Bike -> getBike(cleanMe($_GET["id"]));
+    $customer = $Customer -> getCustomer(cleanMe($_GET["id"]));
     $isEdit = true;
 }
-
-$colors = $Color -> fetchColors();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -34,7 +30,7 @@ $colors = $Color -> fetchColors();
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <?php include "./views/bikes/bikes-form.php"; ?>
+                    <?php include "./views/customers/customer-form.php"; ?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -52,7 +48,7 @@ $colors = $Color -> fetchColors();
         event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '<?=BASE_URL_API?>bike.php',
+            url: '<?=BASE_URL_API?>customer.php',
             data: $( "#formControl" ).serialize()
         })
         .done(function(data){
@@ -84,9 +80,9 @@ $colors = $Color -> fetchColors();
         if (willDelete) {
             $.ajax({
                         type: 'POST',
-                        url: '<?=BASE_URL_API?>bike.php',
+                        url: '<?=BASE_URL_API?>customer.php',
                         data: {
-                        action:"deleteBike",
+                        action:"deleteCustomer",
                         id:$( this ).data("delete")
                         }
                     })

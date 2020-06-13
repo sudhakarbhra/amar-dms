@@ -1,4 +1,9 @@
-
+.card-default .card-body {
+    padding: 1rem;
+}
+.card-body{
+  padding: 1rem;
+}
 .sidebar-fixed-offcanvas .sidebar-with-footer, .sidebar-fixed .sidebar-with-footer {
     padding-bottom: 0;
 }
@@ -24,14 +29,14 @@
 }
 
 .card-input-element+.card {
-  height: calc(26px + 2*1rem);
   color: var(--secondary);
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 2px solid transparent;
   border-radius: 4px;
   padding: 2rem;
-  font-size: 20px;
+  font-size: 18px;
+  padding: .5rem 2rem;
 }
 
 .card-input-element+.card:hover {
@@ -44,5 +49,62 @@
   -o-transition: border .3s;
   transition: border .3s;
   color: var(--primary);
+
 }
 
+
+.card-default .card-header-border-bottom {
+  padding: 1rem 2rem;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.input-group-text.sm-group{
+  padding: 0.5rem 1rem;
+}
+.select2-container{
+  width:100% !important;
+}
+.sidebar .sidebar-inner > li > a{
+  padding: 0.75rem 1rem;
+}
+.sidebar .sub-menu > li > a{
+  padding: 0.5rem 0;
+}
+.navbar{
+  min-height: 60px;
+}
+.navbar .sidebar-offcanvas-toggle, .navbar .sidebar-toggle{
+  padding: 0 1rem;
+  height: 35px;
+  font-size: 1.5rem;
+}
+
+.content {
+    padding: 2rem;
+}
+.sidebar-footer-content{
+  padding: 1rem 1.9rem;
+}
+.app-brand a{
+  height: 60px;
+line-height: 60px;
+}
+.navbar .navbar-right .navbar-nav .notifications-menu .dropdown-toggle{
+    height: 35px;
+line-height: 35px;
+}
+.navbar .navbar-right .navbar-nav .right-sidebar-2-menu i{
+  line-height: 35px;
+}
+.navbar .navbar-right .navbar-nav .user-menu .dropdown-toggle{
+    line-height: 35px;
+}

@@ -30,7 +30,7 @@
 <!-- Listing all Users -->
 <?php foreach ($bikes as $bike) { ?>
   <div class="col-lg-6 col-xl-4">
-    <div class="card card-default p-4">
+    <div class="card card-default p-2">
       <a 
         data-delete="<?=$bike["id"]?>" 
         href="javascript:void(0)" 

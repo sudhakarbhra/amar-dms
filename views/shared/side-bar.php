@@ -34,12 +34,12 @@
             </a>
          </li>
             <li  class="has-sub" >
-               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appOne"
-                  aria-expanded="false" aria-controls="appOne">
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appBike"
+                  aria-expanded="false" aria-controls="appBike">
                <i class="mdi mdi-motorbike"></i>
                <span class="nav-text">Inventory</span> <b class="caret"></b>
                </a>
-               <ul  class="collapse"  id="appOne"
+               <ul  class="collapse"  id="appBike"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >
@@ -57,12 +57,12 @@
 
             </li>
             <li  class="has-sub" >
-               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appTwo"
-                  aria-expanded="false" aria-controls="appTwo">
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appReceipt"
+                  aria-expanded="false" aria-controls="appReceipt">
                <i class="mdi mdi-file-document-outline"></i>
                <span class="nav-text">Recipts</span> <b class="caret"></b>
                </a>
-               <ul  class="collapse"  id="appTwo"
+               <ul  class="collapse"  id="appReceipt"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >
@@ -75,12 +75,30 @@
                
             </li>
             <li  class="has-sub" >
-               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appThree"
-                  aria-expanded="false" aria-controls="appThree">
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appCustomer"
+                  aria-expanded="false" aria-controls="appCustomer">
                <i class="mdi mdi-account-group-outline"></i>
+               <span class="nav-text">Customers</span> <b class="caret"></b>
+               </a>
+               <ul  class="collapse"  id="appCustomer"
+                  data-parent="#sidebar-menu">
+                  <div class="sub-menu">
+                     <li >
+                        <a class="sidenav-item-link" href="./customers.php">
+                        <span class="nav-text">All Customers</span>
+                        </a>
+                     </li>
+                  </div>
+               </ul>
+               
+            </li>
+            <li  class="has-sub" >
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appTeams"
+                  aria-expanded="false" aria-controls="appTeams">
+               <i class="mdi mdi-account-circle-outline"></i>
                <span class="nav-text">Teams</span> <b class="caret"></b>
                </a>
-               <ul  class="collapse"  id="appThree"
+               <ul  class="collapse"  id="appTeams"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                      <li >

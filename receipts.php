@@ -3,7 +3,16 @@ require_once "./app/config.php";
 require_once "./login-check.php";
 
 require_once "./app/classes/Receipt.class.php";
+require_once "./app/classes/Customer.class.php";
+require_once "./app/classes/Color.class.php";
+require_once "./app/classes/Bike.class.php";
+require_once "./app/classes/Account.class.php";
+
 $Receipt = new ReceiptClass($database);
+$Customer = new CustomerClass($database);
+$Bike = new BikeClass($database);
+$Color = new ColorClass($database);
+$Account = new AccountClass($database);
 
 $receipts = $Receipt->fetchReceipts();
 
@@ -35,7 +44,7 @@ $receipts = $Receipt->fetchReceipts();
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>\
+    <?php include "./views/shared/script-tag.php"; ?>
 
  <script>
               $(document).ready(function() {

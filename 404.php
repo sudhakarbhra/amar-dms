@@ -21,7 +21,7 @@
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>\
+    <?php include "./views/shared/script-tag.php"; ?>
 
 
 </body>

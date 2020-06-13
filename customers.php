@@ -2,6 +2,14 @@
 require_once "./app/config.php"; 
 require_once "./login-check.php";
 
+require_once './app/classes/Customer.class.php';
+require_once "./app/classes/Account.class.php";
+
+$Customer = new CustomerClass($database);
+$Account = new AccountClass($database);
+
+$customers = $Customer->fetchCustomers();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -21,7 +29,7 @@ require_once "./login-check.php";
                 <div class="content">	
 
                     <!--//////////////////////////////////////////////// -->
-                    <!-- Paste Everything that are inside content class  -->
+                    <?php include "./views/customers/customers-list.php"; ?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -47,9 +55,9 @@ require_once "./login-check.php";
                             if (willDelete) {
                                 $.ajax({
                                             type: 'POST',
-                                            url: '<?=BASE_URL_API?>receipt.php',
+                                            url: '<?=BASE_URL_API?>customer.php',
                                             data: {
-                                            action:"deleteReceipt",
+                                            action:"deleteCustomer",
                                             id:$( this ).data("delete")
                                             }
                                         })
@@ -74,7 +82,7 @@ require_once "./login-check.php";
                         event.preventDefault();
                         $.ajax({
                             type: 'POST',
-                            url: '<?=BASE_URL_API?>receipt.php',
+                            url: '<?=BASE_URL_API?>customer.php',
                             data: {
                               action:"toggleStatus",
                               id:$( this ).data("toggle")

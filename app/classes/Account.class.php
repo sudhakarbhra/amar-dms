@@ -21,6 +21,10 @@ class AccountClass
         return $this->conn->get($this->_TABLE, "*", ["id" => $req]);
     }
 
+    function getUserInfo($req, $column){
+        return $this->conn->get($this->_TABLE, $column, ["id" => cleanMe($req)]);
+    }
+
     function createUser($req){
     	$uName 		= cleanMe($req["userName"]);
 	    $fName 		= cleanMe($req["firstName"]);

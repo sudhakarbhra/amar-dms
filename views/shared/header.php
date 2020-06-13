@@ -70,7 +70,7 @@
             <svg  data-jdenticon-value="<?=$_SESSION["email"]?>" 
               class="img-fluid rounded" 
               alt="<?=$_SESSION["username"]?>" 
-              width="50" height="50">
+              width="40" height="40">
             Fallback text or image for browsers not supporting inline svg.
         </svg>
             <span class="d-none text-capitalize d-lg-inline-block"><?=$_SESSION["firstName"]." ".$_SESSION["lastName"]?></span>
@@ -81,7 +81,7 @@
                  <svg  data-jdenticon-value="<?=$_SESSION["email"]?>" 
                       class="img-circle mr-1"
                       alt="<?=$_SESSION["username"]?>" 
-                      width="45" height="45">
+                      width="40" height="40">
                     Fallback text or image for browsers not supporting inline svg.
                 </svg>
                 <div class="d-inline-block">

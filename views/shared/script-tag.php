@@ -1,13 +1,19 @@
 <script src="assets/plugins/jquery/jquery.min.js"></script>
+<script src="assets/js/sleek.bundle.js"></script> 
+<!-- TEMPLATE IMPORTS -->
 <script src="assets/plugins/slimscrollbar/jquery.slimscroll.min.js"></script>
 <script src="assets/plugins/jekyll-search.min.js"></script>
-<script src="assets/js/sleek.bundle.js"></script>
+<script src="assets/plugins/select2/js/select2.min.js"></script>
 <script src="assets/plugins/toastr/toastr.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="assets/plugins/data-tables/jquery.datatables.min.js"></script>
 <script src="assets/plugins/data-tables/datatables.bootstrap4.min.js"></script>
+
+<!-- CDN IMPORTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -42,7 +48,9 @@ toastr.options = {
         }
     });
 
-
+// Select Picker Initialization
+  $('.selectpicker').selectpicker();
+  
 // Datatable Initilazation
   $('#data-table').DataTable({
     "dom": '<"row justify-content-between top-information"lf>rt<"row justify-content-between bottom-information"ip><"clear">',

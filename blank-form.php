@@ -30,7 +30,7 @@ require_once "./login-check.php";
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>\
+    <?php include "./views/shared/script-tag.php"; ?>
 
 <script type="text/javascript">
   $(document).ready(function(){

@@ -25,7 +25,21 @@ class ReceiptClass
     	
 
         $this->conn->insert($this->_TABLE, [
-            "name" => cleanMe($req["name"])
+            "userId" => cleanMe($req["userId"]),
+            "vehicleModel" => cleanMe($req["vehicleModel"]),
+            "vehicleColor" => cleanMe($req["vehicleColor"]),
+            "payType" => cleanMe($req["payType"]),
+            "vehicleCost" => cleanMe($req["vehicleCost"]),
+            "regCharge" => cleanMe($req["regCharge"]),
+            "fittings" => cleanMe($req["fittings"]),
+            "insurance" => cleanMe($req["insurance"]),
+            "discount" => cleanMe($req["discount"]),
+            "total" => cleanMe($req["total"]),
+            "downPayment" => cleanMe($req["downPayment"]),
+            "chequeNo" => cleanMe($req["chequeNo"]),
+            "bankName" => cleanMe($req["bankName"]),
+            "comment" => cleanMe($req["comment"]),
+            "createdBy" => cleanMe($req["createdBy"]),
         ]);
         return array("success" => 1,"msg" => 'Receipt is created successfully!!');
 	    
@@ -33,7 +47,21 @@ class ReceiptClass
 
     function editReceipt($req){
     	$this->conn->update($this->_TABLE, [
-            "name" => cleanMe($req["name"])
+            "userId" => cleanMe($req["userId"]),
+            "vehicleModel" => cleanMe($req["vehicleModel"]),
+            "vehicleColor" => cleanMe($req["vehicleColor"]),
+            "payType" => cleanMe($req["payType"]),
+            "vehicleCost" => cleanMe($req["vehicleCost"]),
+            "regCharge" => cleanMe($req["regCharge"]),
+            "fittings" => cleanMe($req["fittings"]),
+            "insurance" => cleanMe($req["insurance"]),
+            "discount" => cleanMe($req["discount"]),
+            "total" => cleanMe($req["total"]),
+            "downPayment" => cleanMe($req["downPayment"]),
+            "chequeNo" => cleanMe($req["chequeNo"]),
+            "bankName" => cleanMe($req["bankName"]),
+            "comment" => cleanMe($req["comment"]),
+            "createdBy" => cleanMe($req["createdBy"]),
         ],[
             "id" => $req["id"] 
         ]);

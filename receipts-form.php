@@ -5,9 +5,12 @@ require_once "./login-check.php";
 require_once "./app/classes/Receipt.class.php";
 require_once "./app/classes/Bike.class.php";
 require_once "./app/classes/Color.class.php";
+require_once "./app/classes/Customer.class.php";
+
 $Receipt = new ReceiptClass($database);
 $Bike = new BikeClass($database);
 $Color = new ColorClass($database);
+$Customer = new CustomerClass($database);
 
 $isEdit = false;
 if (isset($_GET["action"]) && $_GET["action"] == "edit") {
@@ -17,6 +20,7 @@ $receipt = $Receipt->getReceipt($_GET["id"]);
 
 $bikes = $Bike->fetchBikes();
 $colors = $Color->fetchColors();
+$customers = $Customer->fetchCustomers();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -45,9 +49,52 @@ $colors = $Color->fetchColors();
         </div>
         <?php include "./views/shared/footer.php"; ?>
     </div>
-    <?php include "./views/shared/script-tag.php"; ?>\
+    <?php include "./views/shared/script-tag.php"; ?>
+
+    
+        <!-- MODALS -->
+        <?php include "./views/receipts/addCustomerModal.php"; ?>
+        <?php include "./views/receipts/addBikeModal.php"; ?>
+        <?php include "./views/receipts/addColorModal.php"; ?>
+
+
+
+
 
 <script type="text/javascript">
+    function calculateTotal(){
+       
+        let vehicleCost = $('#vehicleCost').val();
+        let downPayment = $('#downPayment').val();
+        let regCharge = $('#regCharge').val();
+        let fittings = $('#fittings').val();
+        let insurance = $('#insurance').val();
+        let discount = $('#discount').val();
+        $('#total').val("");
+
+        if(!downPayment){ downPayment = 0; }
+        if(!vehicleCost){ vehicleCost = 0; }
+        if(!downPayment){ downPayment = 0; }
+        if(!regCharge){ regCharge = 0; }
+        if(!fittings){ fittings = 0; }
+        if(!insurance){ insurance = 0; }
+        if(!discount){ discount = 0; }
+
+        if(downPayment){
+            vehicleCost =0;
+        }
+        let total =  (parseInt(vehicleCost) +  parseInt(downPayment) + parseInt(regCharge) + parseInt(fittings) + parseInt(insurance)) - parseInt(discount);
+        $('#total').val(total);
+         console.log(total);
+
+    }
+
+    function openModal(req){
+        var modal = $(req).children("option:selected").data("modal");
+        if(modal){ $(`#${modal}`).modal();}
+    }
+
+
   $(document).ready(function(){
 
 
@@ -55,13 +102,18 @@ $colors = $Color->fetchColors();
 $('input[type="radio"]').click(function() { 
     var inputValue = $(this).attr("value"); 
     if( inputValue == "finance" ){
-        $("#finaceData").show();
+        $(".finaceData").show(300);
+        $("#downPayment").val("");
+        $("#chequeNo").val("");
+        $("#bankName").val("");
+        calculateTotal();
+
     }else{
-        $("#finaceData").hide();
+        $(".finaceData").hide(300);
+        $("#downPayment").val("0");
+         calculateTotal();
     }
 }); 
-
-
 
 
 
@@ -77,8 +129,8 @@ $('input[type="radio"]').click(function() {
             data = JSON.parse(data);
             if(data.success) {
                 toastr.success(data.msg);
-                $("input, textarea").val("");
-                window.history.back();
+                // $("input, textarea").val("");
+                // window.history.back();
             }else{
                 toastr.warning(data.msg);
             } 

@@ -1,6 +1,6 @@
 <div class="breadcrumb-wrapper  breadcrumb-contacts">
 	<div>
-		<h1>Receipts</h1>						
+		<h1>Customer</h1>						
 	    <nav aria-label="breadcrumb">
 	      <ol class="breadcrumb p-0">
 	        <li class="breadcrumb-item">
@@ -9,14 +9,14 @@
 	          </a>
 	        </li>
 	        <li class="breadcrumb-item">
-	          Receipts
+	          Customer
 	        </li>
-	        <li class="breadcrumb-item" aria-current="page">All Receipts</li>
+	        <li class="breadcrumb-item" aria-current="page">All Customers</li>
 	      </ol>
 	    </nav>
 	</div>
   <div>
-    <a href="./receipts-form.php?action=create" class="btn btn-primary" >Add Receipt</a>
+    <a href="./customer-form.php?action=create" class="btn btn-primary" >Add Customer</a>
   </div>
 </div>
 
@@ -29,10 +29,10 @@
 				<table id="data-table" class="table display nowrap" style="width:100%">
 					   <thead>
 					    <tr>
-					     <th></th>
+					     <th>#</th>
 					     <th>Name</th>
 					     <th>Phone</th>
-					     <th>Vehicle</th>
+					     <th>Area</th>
 					     <th>Created by</th>
 					     <th>Created At</th>
 					     <th>Status</th>
@@ -41,26 +41,23 @@
 					   </thead>
 
 					   <tbody>
-						<?php foreach($receipts as $data){ ?>
+						<?php foreach($customers as $data){ ?>
 					    <tr>
-					     <td><?=$data["id"]?></td>
-					     <td><?=$Customer->getCustomerInfo($data["userId"], "name")?></td>
-					     <td><?=$Customer->getCustomerInfo($data["userId"], "phone")?></td>
-					     <td>
-					     	<?=$Bike->getBikeInfo($data["vehicleModel"], "name")?>
-					     	<?=$Color->getColorInfo($data["vehicleColor"], "colorName")?>	
-				     	</td>
-					     <td><?=$Account->getUserInfo($data["createdBy"], "name")?></td>
-					     <td>
+					    <td><?=$data["id"]?></td>
+					    <td><?=$data["name"]?></td>
+					    <td><?=$data["phone"]?></td>
+					    <td><?=$data["area"]?></td>
+					    <td><?=$Account->getUserInfo($data["createdBy"], "name")?></td>
+					    <td>
 					     	<?=date_format(date_create($data["createdAt"]), "M d h:m a");?>	
 				     	</td>
-					     <td>
+					    <td>
 					     	<?php if ($data["isActive"] == 1) {?>
                            	<span class="badge badge-pill badge-success">Active</span>
                             <?php } else {?>
                             <span class="badge badge-pill badge-dark">Not Active</span>
                             <?php }?>
-					     </td>
+					    </td>
 					     <td>
                         <div class="dropdown">
                             <a class="btn btn-sm btn-outline-secondary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false" >   
@@ -68,7 +65,7 @@
                             </a>
 
                             <div  class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"  >
-                                <a  class="dropdown-item"  href="./receipts-form.php?action=edit&id=<?=$data["id"];?>" > 
+                                <a  class="dropdown-item"  href="./customer-form.php?action=edit&id=<?=$data["id"];?>" > 
                                 	<i   class="mdi mdi-square-edit-outline"> </i> Edit </a>
                                 <a  class="dropdown-item deletePost"   data-delete="<?=$data["id"]?>" href="javascript:void(0)" >
                                 	<i  class="mdi mdi-trash-can-outline text-danger"></i> Delete </a>

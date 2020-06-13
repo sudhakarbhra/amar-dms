@@ -21,6 +21,10 @@ class ColorClass
         return $this->conn->get($this->_TABLE, "*", ["id" => $req]);
     }
 
+    function getColorInfo($req, $column){
+        return $this->conn->get($this->_TABLE, $column, ["id" => cleanMe($req)]);
+    }
+
     function createColor($req){
     	
 
