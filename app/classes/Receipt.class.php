@@ -21,6 +21,10 @@ class ReceiptClass
         return $this->conn->get($this->_TABLE, "*", ["id" => cleanMe($req)]);
     }
 
+    function getReceiptInfo($req, $column){
+        return $this->conn->get($this->_TABLE, $column, ["id" => cleanMe($req)]);
+    }
+    
     function createReceipt($req){
     	
 
@@ -84,8 +88,6 @@ class ReceiptClass
         ]);
         return array("success" => 1, "msg" => "Status Changed Successfully", "debug" => $this->conn->log());
     }
-
-
 
 
 // AccountClass EOL

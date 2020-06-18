@@ -43,13 +43,6 @@
       </a>
 
       <a href="./bike-form.php?action=edit&id=<?=$bike["id"]?>" class="media text-secondary">
-        <svg  data-jdenticon-value="<?=$bike["email"]?>" 
-              class="mr-3 img-fluid rounded" 
-              alt="<?=$bike["name"]?>" 
-              width="100" height="100">
-            Fallback text or image for browsers not supporting inline svg.
-        </svg>
-
         <div class="media-body">
           <h5 class="mt-0 mb-2 text-capitalize text-dark"><?=$bike["name"]?></h5>
           <small><?=$bike["createdAt"]?></small>

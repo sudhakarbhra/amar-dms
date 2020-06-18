@@ -7,12 +7,14 @@ require_once "./app/classes/Customer.class.php";
 require_once "./app/classes/Color.class.php";
 require_once "./app/classes/Bike.class.php";
 require_once "./app/classes/Account.class.php";
+require_once "./app/classes/Invoice.class.php";
 
 $Receipt = new ReceiptClass($database);
 $Customer = new CustomerClass($database);
 $Bike = new BikeClass($database);
 $Color = new ColorClass($database);
 $Account = new AccountClass($database);
+$Invoice = new InvoiceClass($database);
 
 $receipts = $Receipt->fetchReceipts();
 

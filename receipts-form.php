@@ -6,21 +6,27 @@ require_once "./app/classes/Receipt.class.php";
 require_once "./app/classes/Bike.class.php";
 require_once "./app/classes/Color.class.php";
 require_once "./app/classes/Customer.class.php";
+require_once "./app/classes/Invoice.class.php";
+require_once "./app/classes/Account.class.php";
 
+$Account = new AccountClass($database);
 $Receipt = new ReceiptClass($database);
 $Bike = new BikeClass($database);
 $Color = new ColorClass($database);
 $Customer = new CustomerClass($database);
+$Invoice = new InvoiceClass($database);
 
 $isEdit = false;
 if (isset($_GET["action"]) && $_GET["action"] == "edit") {
-$receipt = $Receipt->getReceipt($_GET["id"]);
+    $receipt = $Receipt->getReceipt($_GET["id"]);
+    $invoices = $Invoice->fetchInvoiceByReceiptId($_GET["id"]);
     $isEdit = true;
 }
 
 $bikes = $Bike->fetchBikes();
 $colors = $Color->fetchColors();
 $customers = $Customer->fetchCustomers();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -41,6 +47,7 @@ $customers = $Customer->fetchCustomers();
 
                     <!--//////////////////////////////////////////////// -->
                     <?php include "./views/receipts/receipt-form.php";?>
+                    <?php include "./views/receipts/invoice-list.php";?>
                     <!--//////////////////////////////////////////////// -->
                     
                 </div>
@@ -93,6 +100,12 @@ $customers = $Customer->fetchCustomers();
         var modal = $(req).children("option:selected").data("modal");
         if(modal){ $(`#${modal}`).modal();}
     }
+    function changeInput(){
+        let paymentType = $("#paymentType").val();
+        $('.paymentNotInput').hide(300);
+        $('.paymentNotInput').find('input').val("");
+        $("#"+paymentType).show(300);
+    }
 
 
   $(document).ready(function(){
@@ -129,8 +142,33 @@ $('input[type="radio"]').click(function() {
             data = JSON.parse(data);
             if(data.success) {
                 toastr.success(data.msg);
-                // $("input, textarea").val("");
-                // window.history.back();
+                $("input, textarea").val("");
+                window.history.back();
+            }else{
+                toastr.warning(data.msg);
+            } 
+        })
+        .fail(function(data){
+            data = JSON.parse(data);
+            toastr.error(data.msg);
+        });
+        return false;
+        });
+
+        // FORM SUBMISSION
+        $( "#generateInvoice" ).on( "click", function( event ) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '<?=BASE_URL_API?>invoice.php',
+            data: $( "#receiptForm" ).serialize()
+        })
+        .done(function(data){
+            data = JSON.parse(data);
+            if(data.success) {
+                toastr.success(data.msg);
+                $("input, textarea").val("");
+                location.reload();
             }else{
                 toastr.warning(data.msg);
             } 
@@ -142,6 +180,41 @@ $('input[type="radio"]').click(function() {
         return false;
         });
             $( ".deletePost" ).on( "click", function( event ) {
+    event.preventDefault();
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this data!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                        type: 'POST',
+                        url: '<?=BASE_URL_API?>receipt.php',
+                        data: {
+                        action:"deleteReceipt",
+                        id:$( this ).data("delete")
+                        }
+                    })
+                    .done(function(data){
+                        data = JSON.parse(data);
+                       if(data.success) {
+                            toastr.success(data.msg);
+                            window.history.back();
+                        }else{
+                            toastr.warning(data.msg);
+                        } 
+                    })
+                    .fail(function(data){
+                    data = JSON.parse(data);
+                    toastr.error(data.m);
+                    });
+        }
+        });
+    return false;
+    });            $( ".deleteInvoice" ).on( "click", function( event ) {
     event.preventDefault();
     swal({
         title: "Are you sure?",
