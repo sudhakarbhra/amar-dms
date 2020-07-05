@@ -90,7 +90,7 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
 											<tbody>
 												<?php foreach($datas as $data){ ?>
 												<tr>
-													<td><a  target="_blank" href="https://wa.me/<?=cleanMe($data["mobile"])?>?text=This%20is%20an%20reminder%20from%20Sri%20Amar%20Bikes <?=BASE_URL?>amar-dms/pay-link.php?ph=<?=$data["mobile"]?>" class="btn btn-success btn-sm">
+													<td><a  target="_blank" href="https://wa.me/<?=cleanMe($data["mobile"])?>?text=This%20is%20an%20reminder%20from%20Sri%20Amar%20Bikes <?=BASE_URL?>pay-link.php?ph=<?=$data["mobile"]?>" class="btn btn-success btn-sm">
 														<i class="mdi mdi-whatsapp"></i>
 													</a></td>
 													<td><?=$data["finance_company"]?></td>

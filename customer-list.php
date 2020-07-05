@@ -113,7 +113,7 @@ $datas = $database->select("COLLECTION_LIST", "*")
 											<tbody>
 												<?php foreach($datas as $data){ ?>
 												<tr>
-													<td><a target="_blank" href="https://wa.me/<?=cleanMe($data["customer_mobile"])?>?text=<?=$data["message"]?> <?=BASE_URL?>amar-dms/pay-link.php?ph=<?=$data["customer_mobile"]?>" class="btn btn-success btn-sm">
+													<td><a target="_blank" href="https://wa.me/<?=cleanMe($data["customer_mobile"])?>?text=<?=$data["message"]?> <?=BASE_URL?>pay-link.php?ph=<?=$data["customer_mobile"]?>" class="btn btn-success btn-sm">
 														<i class="mdi mdi-whatsapp"></i>
 													</a></td>
 													<td><?=$data["company"]?></td>
