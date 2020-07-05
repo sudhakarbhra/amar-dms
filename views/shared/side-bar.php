@@ -110,6 +110,29 @@
                </ul>
                
             </li>
+            <li  class="has-sub" >
+               <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#appComm"
+                  aria-expanded="false" aria-controls="appComm">
+               <i class="mdi mdi-chat"></i>
+               <span class="nav-text">Communication</span> <b class="caret"></b>
+               </a>
+               <ul  class="collapse"  id="appComm"
+                  data-parent="#sidebar-menu">
+                  <div class="sub-menu">
+                     <li >
+                        <a class="sidenav-item-link" href="./customer-master.php">
+                        <span class="nav-text">Customer Master</span>
+                        </a>
+                     </li>
+                     <li >
+                        <a class="sidenav-item-link" href="./customer-list.php">
+                        <span class="nav-text">Customer List</span>
+                        </a>
+                     </li>
+                  </div>
+               </ul>
+               
+            </li>
            
          </ul>
       </div>
