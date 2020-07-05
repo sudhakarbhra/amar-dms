@@ -248,7 +248,7 @@
     <div class="card card-default mb-2">
       <div class="card-header card-header-border-bottom d-flex justify-content-between">
         <h5 class="text-capitalize">Bike Cost</h5>
-        <h2>₹ <?=$receipt["vehicleColor"]?>/-</h2>
+        <h2>₹ <?=$receipt["vehicleCost"]?>/-</h2>
       </div>
     </div>
     <div class="card card-default mb-2">
