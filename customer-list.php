@@ -1,6 +1,54 @@
 <?php
 require_once "./app/config.php";
 require_once "./login-check.php";
+if(isset($_POST["submit"]))
+{
+
+
+$database->query("TRUNCATE `amar-dms`.`COLLECTION_LIST`");
+$file = $_FILES['file']['tmp_name'];
+$handle = fopen($file, "r");
+$c = 0;
+while(($filesop = fgetcsv($handle, 1000, ",")) !== false)
+{
+
+		$company = $filesop[0];
+		$upi_id = $filesop[1];
+		$agreement_date = $filesop[2];
+		$vehicle_no = $filesop[3];
+		$customer_name = $filesop[4];
+		$customer_mobile = $filesop[5];
+		$vehicle_type = $filesop[6];
+		$pending_dues = $filesop[7];
+		$due_amount = $filesop[8];
+		$lpi = $filesop[9];
+		$handloon = $filesop[10];
+		$total_pay = $filesop[11];
+		$last_paid_date = $filesop[12];
+		$last_paid_amount = $filesop[13];
+		$upto = $filesop[14];
+		$message = $filesop[15];
+$database->insert("COLLECTION_LIST", [
+	"company" => cleanMe($company),
+	"upi_id" => cleanMe($upi_id),
+	"agreement_date" => cleanMe($agreement_date),
+	"vehicle_no" => cleanMe($vehicle_no),
+	"customer_name" => cleanMe($customer_name),
+	"customer_mobile" => cleanMe($customer_mobile),
+	"vehicle_type" => cleanMe($vehicle_type),
+	"pending_dues" => cleanMe($pending_dues),
+	"due_amount" => cleanMe($due_amount),
+	"handloon" => cleanMe($handloon),
+	"lpi" => cleanMe($lpi),
+	"total_pay" => cleanMe($total_pay),
+	"last_paid_date" => cleanMe($last_paid_date),
+	"last_paid_amount" => cleanMe($last_paid_amount),
+	"upto" => cleanMe($upto),
+	"message" => cleanMe($message)
+]);
+$c++;
+}
+}
 $datas = $database->select("COLLECTION_LIST", "*")
 ?>
 <!DOCTYPE html>
@@ -17,6 +65,23 @@ $datas = $database->select("COLLECTION_LIST", "*")
 				<?php include "./views/shared/header.php"; ?>
 				<div class="content-wrapper">
 					<div class="content">
+						<div class="row my-2">
+							<div class="col-12">
+								<div class="card card-default">
+									<div class="card-body">
+										<form enctype="multipart/form-data" method="post" role="form">
+											<div class="form-group">
+												<label for="exampleInputFile">File Upload</label>
+												<input type="file" name="file" id="file" size="150">
+												<p class="help-block">Only Excel/CSV File Import.</p>
+											</div>
+											<button type="submit" class="btn btn-primary" name="submit" value="submit">Upload</button>
+										</form>
+										<a href="<?=BASE_URL?>assets/COLLECTION_LIST.csv" target="_blank" download="download"> Download Sample File</a>
+									</div>
+								</div>
+							</div>
+						</div>
 						<!--//////////////////////////////////////////////// -->
 						<div class="row">
 							<div class="col-12">
