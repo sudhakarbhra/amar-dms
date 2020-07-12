@@ -35,9 +35,9 @@ exit();
 							<span class="input-group-text" id="basic-addon1">+91</span>
 						</div>
 						<input type="text" class="form-control" name="ph" placeholder="Phone Number">
-						<div class="input-group-prepend">
-							<button class="btn btn-outline-secondary" type="submit" id="button-addon1">Get Customer Info ></button>
-						</div>
+						
+						<button class="btn btn-outline-secondary" type="submit" id="button-addon1">Get Customer Info ></button>
+						
 					</div>
 				</form>
 				
