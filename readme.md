@@ -14,13 +14,11 @@
 4. User Profile Management
 5. Company Information
 
-[========]
 
 **Version 0.0.2**
 1. Excel/CSV  Uploading
 2. Customer Follow up and Payment Collection via UPI
 
-[========]
 
 **Installation Guide**
 
@@ -34,7 +32,6 @@
 
 5. In `app/` folder you'll find `database.sql` file upload them in to your database
 
-[========]
 
 
 [AMAR DMS]: https://github.com/sudhakarbhra/amar-dms "Amar DMS"
