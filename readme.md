@@ -33,6 +33,7 @@
 4. Make sure `$live` is set to **true** in production enviromnent
 
 5. In `app/` folder you'll find `database.sql` file upload them in to your database
+
 [========]
 
 
