@@ -16,18 +16,18 @@ use Medoo\Medoo;
 $live = true;
 if($live){
 
-define("DBNAME", "u330404416_amardms");
+define("DBNAME", "expostoa_sriamarpay");
 define("DBSERVER", "localhost");
-define("DBUSER", "u330404416_amardms");
-define("DBPASS", "Simple@123");
+define("DBUSER", "expostoa_bikes");
+define("DBPASS", "Teny@!123");
 
 define("URL", "amar-dms/");
-define("BASE_URL", "http://amardms.tech/");
-define("BASE_URL_ADMIN", "http://amardms.tech/admin/");
-define("BASE_URL_API", "http://amardms.tech/app/api/");
+define("BASE_URL", "http://sriamarbikes.com/pay/");
+define("BASE_URL_ADMIN", "http://sriamarbikes.com/pay/admin/");
+define("BASE_URL_API", "http://sriamarbikes.com/pay/app/api/");
 
-define("FILE_UPLOAD", "http://amardms.tech/uploads/upload.php");
-define("BASE_URL_UPLOAD", "http://amardms.techuploads/");
+define("FILE_UPLOAD", "http://sriamarbikes.com/pay/uploads/upload.php");
+define("BASE_URL_UPLOAD", "http://sriamarbikes.com/pay/uploads/");
 
 }else{
 

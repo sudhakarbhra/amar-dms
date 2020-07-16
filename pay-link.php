@@ -24,10 +24,10 @@ exit();
 		<?php include "./views/shared/page-spinner.php"; ?>
 		
 		<!--//////////////////////////////////////////////// -->
-		<div class="container p-4">
-			<div class="col-12 p-4">
+		<div class="container py-2">
+			<div class="col-12 px-0">
 				<!-- FORM -->
-				
+				<?php if(empty($_GET) && empty($_GET["ph"])){  ?>
 				<form method="GET">
 					<label>Enter Your Phone number</label>
 					<div class="input-group mb-3">
@@ -36,19 +36,20 @@ exit();
 						</div>
 						<input type="text" class="form-control" name="ph" placeholder="Phone Number">
 						
-						<button class="btn btn-outline-secondary" type="submit" id="button-addon1">Get Customer Info ></button>
 						
 					</div>
+						<button class="btn btn-outline-secondary" type="submit" id="button-addon1">Get Customer Info ></button>
 				</form>
-				
 				<hr>
+				<?php } ?>
+				
 				<?php if(!empty($_GET) && !empty($_GET["ph"])){  ?>
 				<div class="card">
 					<div class="card-body">
 						<?php if($master) { ?>
-						<h5 mb-2 class="card-title"><?=$data["customer"]?></h5 mb-2>
+						<h5 mb-2 class="card-title"><?=$data["customer"]?> ( <?=$data["vehicle_no"]?> ) </h5 mb-2>
 						<?php } else { ?>
-						<h5 mb-2 class="card-title"><?=$data["customer_name"]?></h5 mb-2>
+						<h5 mb-2 class="card-title"><?=$data["customer_name"]?> ( <?=$data["vehicle_no"]?> ) </h5 mb-2>
 						<?php } ?>
 						<div class="card-text">
 							<?php if($master) { ?>
@@ -68,14 +69,14 @@ exit();
 								<div class="col h5 mb-2">Mobile</div>
 								<div class="col"><?=$data["mobile"]?></div>
 							</div>
-							<div class="row">
-								<div class="col h5 mb-2">Vehicle No</div>
-								<div class="col"><?=$data["vehicle_no"]?></div>
-							</div>
-							<div class="row">
-								<div class="col h5 mb-2">Customer</div>
-								<div class="col"><?=$data["customer"]?></div>
-							</div>
+							<!--<div class="row">-->
+							<!--	<div class="col h5 mb-2">Vehicle No</div>-->
+							<!--	<div class="col"><?=$data["vehicle_no"]?></div>-->
+							<!--</div>-->
+							<!--<div class="row">-->
+							<!--	<div class="col h5 mb-2">Customer</div>-->
+							<!--	<div class="col"><?=$data["customer"]?></div>-->
+							<!--</div>-->
 							<div class="row">
 								<div class="col h5 mb-2">Vehicle Type</div>
 								<div class="col"><?=$data["vehicle_type"]?></div>
@@ -106,15 +107,15 @@ exit();
 								<div class="col"><?=$data["agreement_date"]?></div>
 							</div>
 							
-							<div class="row">
-								<div class="col h5 mb-2">Vehicle No</div>
-								<div class="col"><?=$data["vehicle_no"]?></div>
-							</div>
+							<!--<div class="row">-->
+							<!--	<div class="col h5 mb-2">Vehicle No</div>-->
+							<!--	<div class="col"><?=$data["vehicle_no"]?></div>-->
+							<!--</div>-->
 							
-							<div class="row">
-								<div class="col h5 mb-2">Customer Name</div>
-								<div class="col"><?=$data["customer_name"]?></div>
-							</div>
+							<!--<div class="row">-->
+							<!--	<div class="col h5 mb-2">Customer Name</div>-->
+							<!--	<div class="col"><?=$data["customer_name"]?></div>-->
+							<!--</div>-->
 							
 							<div class="row">
 								<div class="col h5 mb-2">Customer Mobile</div>
@@ -148,7 +149,7 @@ exit();
 							
 							<div class="row">
 								<div class="col h5 mb-2">Total Pay</div>
-								<div class="col"><?=$data["total_pay"]?></div>
+								<div class="col h5"><?=$data["total_pay"]?></div>
 							</div>
 							
 							<div class="row">
@@ -166,16 +167,16 @@ exit();
 								<div class="col"><?=$data["upto"]?></div>
 							</div>
 							
-							<div class="row">
-								<div class="col h5 mb-2">Message</div>
-								<div class="col"><?=$data["message"]?></div>
-							</div>
+							<!--<div class="row">-->
+							<!--	<div class="col h5 mb-2">Message</div>-->
+							<!--	<div class="col"><?=$data["message"]?></div>-->
+							<!--</div>-->
 							
 							<?php } ?>
 						</div>
-						<?php if($master) { ?>
-						<div class="row py-4">
-							<div class="col">
+						<?php// if($master) { ?>
+					
+						
 								<form method="GET">
 									<label>Enter Your Phone number</label>
 									<div class="input-group mb-3">
@@ -183,20 +184,19 @@ exit();
 											<span class="input-group-text" id="basic-addon1">₹</span>
 										</div>
 										<input type="hidden" name="ph" value="<?=$data["mobile"]?>">
-										<input type="text" class="form-control" name="pay" placeholder="Enter Amount">
-										<div class="input-group-prepend">
-											<button class="btn btn-outline-success" type="submit" id="button-addon1">Pay Now ></button>
-										</div>
+										<input type="text" class="form-control w-100" name="pay" placeholder="Enter Amount">
+										
+										
 									</div>
+											<button class="btn btn-outline-success" type="submit" id="button-addon1">Pay Now ></button>
 								</form>
-							</div>
-							<div class="col">
-							</div>
+						
+							
 							
 						</div>
-						<?php } else { ?>
-						<a target="_blank" href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>-Pay%20to%20SRI%20AMAR%20BIKED&cu=INR" class="my-4 btn btn-primary">PAY NOW via UPI > </a>
-						<?php } ?>
+						<?php// } else { ?>
+						<a target="_blank" href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>-Pay%20to%20SRI%20AMAR%20BIKED&cu=INR" class="my-4 btn btn-primary">PAY TOTAL AMOUNT  via UPI > </a>
+						<?php //} ?>
 						
 					</div>
 				</div>
