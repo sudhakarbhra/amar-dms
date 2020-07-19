@@ -2,18 +2,17 @@
 require_once "./app/config.php";
 $master = false;
 if(!empty($_GET)){
-	$datas = $database->select("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_GET["ph"])]);
-	if(empty($datas)){
-		$datas = $database->select("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_GET["ph"])]);
+	$data = $database->get("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_GET["ph"])]);
+	if(empty($data)){
+		$data = $database->get("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_GET["ph"])]);
 		$master = true;
 	}
-	if($datas){
+if(!empty($data) && !empty($_GET["pay"])){
 
-		$data = $datas[0];
-	}
+$redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_GET["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."Pay%20to%20SRI%20AMAR%20BIKED&cu=INR";
 
-	if(!empty($datas) && !empty($_GET["pay"])){
-header('Location: upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$_GET["pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>-Pay%20to%20SRI%20AMAR%20BIKED&cu=INR');
+
+header('Location: '.$redirect);
 echo "<h1>Please wait processing your payment</h1>";
 exit();
 }
