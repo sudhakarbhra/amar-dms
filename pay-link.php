@@ -180,14 +180,14 @@ exit();
                             <?php if(!empty($data["lpi"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">LPI</div>
-                                <div class="col"><?=$data["lpi"]?></div>
+                                <div class="col">₹ <?=$data["lpi"]?></div>
                             </div>
                             <?php } ?>
 
                             <?php if(!empty($data["handloon"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">Handloan</div>
-                                <div class="col"><?=$data["handloon"]?></div>
+                                <div class="col">₹ <?=$data["handloon"]?></div>
                             </div>
                             <?php } ?>
 
