@@ -173,7 +173,7 @@ exit();
                             <?php if(!empty($data["due_amount"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">Due Amount</div>
-                                <div class="col">₹ <?=$data["due_amount"]?> /-</div>
+                                <div class="col">₹ <?=$data["due_amount"]?></div>
                             </div>
                             <?php } ?>
 
