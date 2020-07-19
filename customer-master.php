@@ -5,7 +5,7 @@ if(isset($_POST["submit"]))
 {
 
 
-$database->query("TRUNCATE `u330404416_amardms`.`CUSTOMER_MASTER`);
+$database->query("TRUNCATE `u330404416_amardms`.`CUSTOMER_MASTER`");
 $file = $_FILES['file']['tmp_name'];
 $handle = fopen($file, "r");
 $c = 0;
