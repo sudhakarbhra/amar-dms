@@ -52,12 +52,14 @@ exit();
 
                 <?php if(!empty($_GET) && !empty($_GET["ph"])){  ?>
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <?php if($master) { ?>
-                        <h5 mb-2 class="card-title"><?=$data["customer"]?> ( <?=$data["vehicle_no"]?> ) </h5 mb-2>
+                        <h5 mb-2 class="card-title mb-0"><?=$data["customer"]?> ( <?=$data["vehicle_no"]?> ) </h5>
                         <?php } else { ?>
-                        <h5 mb-2 class="card-title"><?=$data["customer_name"]?> ( <?=$data["vehicle_no"]?> ) </h5 mb-2>
+                        <h5 mb-2 class="card-title mb-0"><?=$data["customer_name"]?> ( <?=$data["vehicle_no"]?> ) </h5>
                         <?php } ?>
+                        <small><b>Last Update : </b>
+                            <?=date_format(date_create($data["updatedAt"]), "M d Y");?></small>
                     </div>
                     <div class="card-body">
 
