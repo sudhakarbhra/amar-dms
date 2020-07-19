@@ -16,10 +16,15 @@ use Medoo\Medoo;
 $live = true;
 if($live){
 
-define("DBNAME", "expostoa_sriamarpay");
+// define("DBNAME", "expostoa_sriamarpay");
+// define("DBSERVER", "localhost");
+// define("DBUSER", "expostoa_bikes");
+// define("DBPASS", "Teny@!123");
+
+define("DBNAME", "u330404416_amardms");
 define("DBSERVER", "localhost");
-define("DBUSER", "expostoa_bikes");
-define("DBPASS", "Teny@!123");
+define("DBUSER", "u330404416_amardms");
+define("DBPASS", "Simple@123");
 
 define("URL", "amar-dms/");
 define("BASE_URL", "http://sriamarbikes.com/pay/");
