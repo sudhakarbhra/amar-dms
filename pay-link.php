@@ -9,7 +9,7 @@ if(!empty($_GET)){
 	}
 if(!empty($data) && !empty($_GET["pay"])){
 
-$redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_GET["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."%20Pay%20to%20SRI%20AMAR%20BIKED&cu=INR";
+$redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_GET["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."%20Pay%20to%20SRI%20AMAR%20BIKES%20".$data["finance_company"]."&cu=INR";
 
 
 header('Location: '.$redirect);
@@ -108,7 +108,7 @@ exit();
                             <?php if(!empty($data["emi_amount"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">EMI Amount</div>
-                                <div class="col">Rs. <?=$data["emi_amount"]?> /-</div>
+                                <div class="col">₹ <?=$data["emi_amount"]?> /-</div>
                             </div>
                             <?php } ?>
                             <?php if(!empty($data["due_date"])){ ?>
@@ -173,7 +173,7 @@ exit();
                             <?php if(!empty($data["due_amount"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">Due Amount</div>
-                                <div class="col">Rs. <?=$data["due_amount"]?> /-</div>
+                                <div class="col">₹ <?=$data["due_amount"]?> /-</div>
                             </div>
                             <?php } ?>
 
@@ -194,7 +194,7 @@ exit();
                             <?php if(!empty($data["total_pay"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">Total Pay</div>
-                                <div class="col h5">Rs. <?=$data["total_pay"]?> /-</div>
+                                <div class="col h5">₹ <?=$data["total_pay"]?> /-</div>
                             </div>
                             <?php } ?>
 
@@ -243,8 +243,8 @@ exit();
                     </div>
 
                     <a target="_blank"
-                        href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>-Pay%20to%20SRI%20AMAR%20BIKED&cu=INR"
-                        class="mt-4 card-footer bg-primary text-white text-center">PAY Rs. <?=$data["total_pay"]?> /-
+                        href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>-Pay%20to%20SRI%20AMAR%20BIKED%20<?=$data["finance_company"]?>&cu=INR"
+                        class="mt-4 card-footer bg-primary text-white text-center">PAY ₹ <?=$data["total_pay"]?> /-
                     </a>
                 </div>
 
