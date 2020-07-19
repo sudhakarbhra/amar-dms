@@ -59,7 +59,7 @@ exit();
                         <h5 mb-2 class="card-title mb-0"><?=$data["customer_name"]?><br /> ( <?=$data["vehicle_no"]?> )
                         </h5>
                         <?php } ?>
-                        <small><b>Last Update : </b><br />
+                        <small><b>Last Update</b><br />
                             <?=date_format(date_create($data["updatedAt"]), "M d Y");?></small>
                     </div>
                     <div class="card-body">
