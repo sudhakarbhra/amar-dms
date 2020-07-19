@@ -13,7 +13,7 @@ use Medoo\Medoo;
 
 // https://auth-db132.hostinger.com/db_structure.php?server=1&db=u330404416_ndi
 // LOCAL CONSTANTS
-$live = true;
+$live = false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
 if($live){
 
 // define("DBNAME", "expostoa_sriamarpay");
@@ -27,12 +27,21 @@ define("DBUSER", "u330404416_amardms");
 define("DBPASS", "Simple@123");
 
 define("URL", "amar-dms/");
-define("BASE_URL", "http://sriamarbikes.com/pay/");
-define("BASE_URL_ADMIN", "http://sriamarbikes.com/pay/admin/");
-define("BASE_URL_API", "http://sriamarbikes.com/pay/app/api/");
+define("BASE_URL", "http://amardms.tech/");
+define("BASE_URL_ADMIN", "http://amardms.tech/admin/");
+define("BASE_URL_API", "http://amardms.tech/app/api/");
 
-define("FILE_UPLOAD", "http://sriamarbikes.com/pay/uploads/upload.php");
-define("BASE_URL_UPLOAD", "http://sriamarbikes.com/pay/uploads/");
+define("FILE_UPLOAD", "http://amardms.tech/uploads/upload.php");
+define("BASE_URL_UPLOAD", "http://amardms.tech/uploads/");
+
+
+// define("URL", "amar-dms/");
+// define("BASE_URL", "http://amardms.tech/pay/");
+// define("BASE_URL_ADMIN", "http://amardms.tech/pay/admin/");
+// define("BASE_URL_API", "http://amardms.tech/pay/app/api/");
+
+// define("FILE_UPLOAD", "http://amardms.tech/pay/uploads/upload.php");
+// define("BASE_URL_UPLOAD", "http://amardms.tech/pay/uploads/");
 
 }else{
 
