@@ -13,7 +13,7 @@ use Medoo\Medoo;
 
 // https://auth-db132.hostinger.com/db_structure.php?server=1&db=u330404416_ndi
 // LOCAL CONSTANTS
-$live = true;
+$live = false;
 if($live){
 
 // define("DBNAME", "expostoa_sriamarpay");
