@@ -108,13 +108,13 @@ exit();
                             <?php if(!empty($data["emi_amount"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">EMI Amount</div>
-                                <div class="col"><?=$data["emi_amount"]?></div>
+                                <div class="col">Rs. <?=$data["emi_amount"]?> /-</div>
                             </div>
                             <?php } ?>
                             <?php if(!empty($data["due_date"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">Due Date</div>
-                                <div class="col"><?=$data["due_date"]?></div>
+                                <div class="col"> <?=$data["due_date"]?> </div>
                             </div>
                             <?php } ?>
 
@@ -173,7 +173,7 @@ exit();
                             <?php if(!empty($data["due_amount"])){ ?>
                             <div class="row">
                                 <div class="col h5 mb-2">Due Amount</div>
-                                <div class="col"><?=$data["due_amount"]?></div>
+                                <div class="col">Rs. <?=$data["due_amount"]?> /-</div>
                             </div>
                             <?php } ?>
 
