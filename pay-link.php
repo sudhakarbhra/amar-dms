@@ -9,7 +9,7 @@ if(!empty($_GET)){
 	}
 if(!empty($data) && !empty($_GET["pay"])){
 
-$redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_GET["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."Pay%20to%20SRI%20AMAR%20BIKED&cu=INR";
+$redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_GET["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."%20Pay%20to%20SRI%20AMAR%20BIKED&cu=INR";
 
 
 header('Location: '.$redirect);
