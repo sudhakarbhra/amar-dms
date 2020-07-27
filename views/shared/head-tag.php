@@ -1,9 +1,9 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="SRI AMAR BIKES | Get Latest Bike models at afforable price">
-
-<title>DMS | Sri Amar Bikes</title>
+<meta name="description" content="Loan Through -- Sri Amar Bikes">
+ 
+<title>Loan Through -- Sri Amar Bikes</title>
 
 <!-- GOOGLE FONTS -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"

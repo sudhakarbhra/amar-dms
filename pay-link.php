@@ -33,9 +33,10 @@
                         <p class="card-text">Enter Mobile Number in the above for and click <span class="text-danger">"GET EMI INFO"</span> to
                             get EMI Details</p>
                             <br/>
-                            <ul>
-                                <li>Please Pay as early as possible to avoid late payment additional charges</li>
-                                <li>Please Share your screenshot of successfulll transaction to us.</li>
+                            <h6>Note:</h6>
+                            <ul style="padding-left: 20px;" >
+                                <li style="list-style-type: circle;">Late payment additional charges please avoid it</li>
+                                <li style="list-style-type: circle;">Please Share your screenshot of successfulll transaction to us.</li>
                             </ul>
                         <a target="_blank" href="https://wa.me/+919994778985?text=Hi!, Sri Amar Bikes. I have the following Query" class="btn btn-outline-success btn-sm my-4">
                             <i class="mdi mdi-whatsapp h5 mb-2"></i> Contact Sri Amar Bikes

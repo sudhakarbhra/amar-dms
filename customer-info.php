@@ -7,15 +7,15 @@ if(!empty($_POST)){
 if($_POST["otp"] == $_POST["opt1"]){ $otpVerified = true;
 
 
-$data = $database->get("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_POST["ph"])]);
+$datas = $database->select("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_POST["ph"])]);
 if(empty($data)){
-    $data = $database->get("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_POST["ph"])]);
+    $datas = $database->select("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_POST["ph"])]);
     $master = true;
 }
 
 }else{$otpVerified = false;}
 
-if(!empty($data) && !empty($_POST["pay"])){
+if(!empty($datas) && !empty($_POST["pay"])){
 
 $redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_POST["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."%20".$data["finance_company"].$data["company"]."&cu=INR";
 
@@ -51,6 +51,7 @@ exit();
                 <!-- FORM -->
 
                 <?php if(!empty($_POST) && !empty($_POST["ph"]) && $otpVerified){  ?>
+                    <?php foreach($datas as $data ){ ?>
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <?php if($master) { ?>
@@ -265,6 +266,8 @@ exit();
                         <?=$data["total_pay"]?> /-
                     </a>
                 </div>
+
+            <?php  } ?>
                 <div class="d-flex justify-content-center">
                     <?php if($master) { ?>
                     <a target="_blank" href="https://wa.me/+919994778985?text=<?=$data["mobile"]?>

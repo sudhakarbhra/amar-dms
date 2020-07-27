@@ -23,7 +23,7 @@ $senderId = "SAMRBK";
 $opt = mt_rand(1000,9999);
 
 //Your message to send, Add URL encoding here.
-$message = urlencode("Welcome to Sri Amar Bikes, You OTP is ".$opt.". Enter this to get EMI Information");
+$message = urlencode($opt.".is your OTP Enter this to get EMI Information. Sri Amar Bikes,");
 
 //Define route 
 $route = 4;
