@@ -57,7 +57,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
 
 //get response
-// $output = curl_exec($ch);
+$output = curl_exec($ch);
 
 //Print error if any
 if(curl_errno($ch))
