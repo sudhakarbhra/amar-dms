@@ -267,7 +267,7 @@ exit();
                 </div>
                 <div class="d-flex justify-content-center">
                     <?php if($master) { ?>
-                    <a target="_blank" href="https://wa.me/+919840110005?text=<?=$data["mobile"]?>
+                    <a target="_blank" href="https://wa.me/+919994778985?text=<?=$data["mobile"]?>
                         <?=$data["vehicle_no"]?>
                         <?=$data["customer"]?>
                         <?=$data["vehicle_type"]?>"
@@ -275,7 +275,7 @@ exit();
                         <i class="mdi mdi-whatsapp text-bold mb-2"></i> Contact Sri Amar Bikes
                     </a>
                     <?php }else{ ?>
-                    <a target="_blank" href="https://wa.me/+919840110005?text=<?=$data["customer_mobile"]?>
+                    <a target="_blank" href="https://wa.me/+919994778985?text=<?=$data["customer_mobile"]?>
                         <?=$data["vehicle_no"]?>
                         <?=$data["customer_name"]?>
                         <?=$data["vehicle_type"]?>"

@@ -106,12 +106,12 @@ $otpsent = true;
                 </form>
             </div>
             <?php }else{ ?>
-            <h3 class="mb-3">Something went wrong while sending OTP</h3>
-            <p>Check whether you have entered</p>
+            <h3 class="mb-3">Kindly use registered Mobile Number</h3>
+            <p>Check whether you have entered</p><br/>
             <ul>
                 <li>Correct mobile number, eg.9875679499</li>
                 <li>Dont't add +91, or 0, or any country code before</li>
-                <li>If still presists contact <a target="_blank" href="https://wa.me/+919840110005?text=I have the following query" class="text-danger my-4">
+                <li>If still not showing up, please contact <a target="_blank" href="https://wa.me/+919994778985?text=My Number is not showing up, this is my number <?=$_POST["ph"]?>" class="text-danger my-4">
                         <i class="mdi mdi-whatsapp h5 mb-2"></i> Contact Sri Amar Bikes
                     </a>
                 <li>
