@@ -21,7 +21,7 @@ $senderId = "SAMRBK";
 
 // Generating OTP
 $opt = mt_rand(1000,9999);
-
+echo opt;
 
 // //Your message to send, Add URL encoding here.
 // $message = urlencode("Welcome to Sri Amar Bikes, You OTP is ".$opt.". Enter this to get EMI Information");
