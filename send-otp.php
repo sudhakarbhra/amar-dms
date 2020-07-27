@@ -21,6 +21,7 @@ $senderId = "SAMRBK";
 
 // Generating OTP
 $opt = mt_rand(1000,9999);
+var_dump($opt);
 
 //Your message to send, Add URL encoding here.
 $message = urlencode($opt.".is your OTP Enter this to get EMI Information. Sri Amar Bikes,");
@@ -56,7 +57,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
 
 //get response
-$output = curl_exec($ch);
+// $output = curl_exec($ch);
 
 //Print error if any
 if(curl_errno($ch))
@@ -94,7 +95,8 @@ $otpsent = true;
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>OTP has been sent you your phone number,</label>
-                                <input type="tel" placeholder="Enter your OTP here" maxlength="4" name="otp" class="form-control mb-3 text-center" />
+                                <input type="tel" placeholder="Enter your OTP here" maxlength="4" name="otp"
+                                    class="form-control mb-3 text-center" />
                                 <input type="hidden" name="opt1" value="<?=$opt?>" />
                                 <input type="hidden" name="ph" value="<?=$mobileNumber?>" />
                                 <div class="row justify-content-center">
@@ -102,16 +104,18 @@ $otpsent = true;
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </form>
             </div>
             <?php }else{ ?>
             <h3 class="mb-3">Kindly use registered Mobile Number</h3>
-            <p>Check whether you have entered</p><br/>
+            <p>Check whether you have entered</p><br />
             <ul>
                 <li>Correct mobile number, eg.9875679499</li>
                 <li>Dont't add +91, or 0, or any country code before</li>
-                <li>If still not showing up, please contact <a target="_blank" href="https://wa.me/+919994778985?text=My Number is not showing up, this is my number <?=$_POST["ph"]?>" class="text-danger my-4">
+                <li>If still not showing up, please contact <a target="_blank"
+                        href="https://wa.me/+919994778985?text=My Number is not showing up, this is my number <?=$_POST["ph"]?>"
+                        class="text-danger my-4">
                         <i class="mdi mdi-whatsapp h5 mb-2"></i> Contact Sri Amar Bikes
                     </a>
                 <li>

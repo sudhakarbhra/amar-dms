@@ -8,22 +8,13 @@ if($_POST["otp"] == $_POST["opt1"]){ $otpVerified = true;
 
 
 $datas = $database->select("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_POST["ph"])]);
-if(empty($data)){
+if(empty($datas)){
     $datas = $database->select("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_POST["ph"])]);
     $master = true;
 }
 
 }else{$otpVerified = false;}
 
-if(!empty($datas) && !empty($_POST["pay"])){
-
-$redirect = "upi://pay?pa=".$data["upi_id"]."&pn=SRI%20AMAR%20BIKED&am=".$_POST["pay"]."&tr=AMAR2020&tn=".$data["vehicle_no"]."%20".$data["finance_company"].$data["company"]."&cu=INR";
-
-
-header('Location: '.$redirect);
-echo "<h1>Please wait processing your payment</h1>";
-exit();
-}
 
 
 }
@@ -36,9 +27,9 @@ exit();
 <head>
     <?php include "./views/shared/head-tag.php"; ?>
     <style type="text/css">
-        body{
-            font-size: 12px;
-        }
+    body {
+        font-size: 12px;
+    }
     </style>
 </head>
 
@@ -51,8 +42,8 @@ exit();
                 <!-- FORM -->
 
                 <?php if(!empty($_POST) && !empty($_POST["ph"]) && $otpVerified){  ?>
-                    <?php foreach($datas as $data ){ ?>
-                <div class="card">
+                <?php foreach($datas as $data ){ ?>
+                <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <?php if($master) { ?>
                         <h5 mb-2 class="card-title mb-0">
@@ -249,52 +240,71 @@ exit();
                             <!--</div>-->
                             <?php } ?>
                         </div>
-                        <form method="POST" class="mt-2">
+                        <form method="POST" action="./upi-pay.php" class="mt-2">
                             <label>Partial Amount </label>
+
+
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend ">
                                     <span class="input-group-text py-1" id="basic-addon1">₹</span>
                                 </div>
-                                <input type="hidden" name="ph" value="<?=$_POST["ph"]?>">
-                                <input type="tel" class="form-control form-control-sm w-100" name="pay" placeholder="Enter Amount">
+
+
+                                <input type="tel" class="form-control form-control-sm w-100" name="pay"
+                                    placeholder="Enter Amount">
                             </div>
-                            <button class="btn btn-sm btn-outline-success" type="submit" id="button-addon1">Pay Now ></button>
+                            <input type="hidden" name="vehicle_no" value="<?=$data["vehicle_no"]?>">
+                            <input type="hidden" name="upi_id" value="<?=$data["upi_id"]?>">
+                            <?php if($master){ ?>
+                            <input type="hidden" name="company" value="<?=$data["finance_company"]?>">
+                            <?php }else{ ?>
+                            <input type="hidden" name="company" value="<?=$data["company"]?>">
+                            <?php }?>
+                            <button class="btn btn-sm btn-outline-success" type="submit" id="button-addon1">Pay Now
+                                ></button>
                         </form>
                     </div>
-                    <a target="_blank" href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["finance_company"]?><?=$data["company"]?>&cu=INR"
+                    <?php if($master) { ?>
+                    <a target="_blank"
+                        href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["emi_amount"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["finance_company"]?>&cu=INR"
+                        class="mt-2 card-footer bg-primary text-white text-center">PAY ₹
+                        <?=$data["emi_amount"]?> /-
+                    </a>
+                    <?php } else {?>
+                    <a target="_blank"
+                        href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["company"]?>&cu=INR"
                         class="mt-2 card-footer bg-primary text-white text-center">PAY ₹
                         <?=$data["total_pay"]?> /-
                     </a>
+                    <?php } ?>
                 </div>
 
-            <?php  } ?>
+                <?php  } ?>
                 <div class="d-flex justify-content-center">
                     <?php if($master) { ?>
                     <a target="_blank" href="https://wa.me/+919994778985?text=<?=$data["mobile"]?>
                         <?=$data["vehicle_no"]?>
                         <?=$data["customer"]?>
-                        <?=$data["vehicle_type"]?>"
-                        class="btn btn-sm btn-success my-4">
+                        <?=$data["vehicle_type"]?>" class="btn btn-sm btn-success my-4">
                         <i class="mdi mdi-whatsapp text-bold mb-2"></i> Contact Sri Amar Bikes
                     </a>
                     <?php }else{ ?>
                     <a target="_blank" href="https://wa.me/+919994778985?text=<?=$data["customer_mobile"]?>
                         <?=$data["vehicle_no"]?>
                         <?=$data["customer_name"]?>
-                        <?=$data["vehicle_type"]?>"
-                        class="btn  btn-sm btn-success my-4">
+                        <?=$data["vehicle_type"]?>" class="btn  btn-sm btn-success my-4">
                         <i class="mdi mdi-whatsapp text-bold mb-2"></i> Contact Sri Amar Bikes
                     </a>
                 </div>
                 <?php } ?>
                 <?php }else{ ?>
-                        <h3>Sri Amar Bikes</h3>
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="text-danger mb-3">OTP Don't Match </h4>
-                            <a class="btn btn-info btn-sm" href="./pay-link.php">click here to try again</a>
-                        </div>
+                <h3>Sri Amar Bikes</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-danger mb-3">OTP Don't Match </h4>
+                        <a class="btn btn-info btn-sm" href="./pay-link.php">click here to try again</a>
                     </div>
+                </div>
 
                 <?php } ?>
             </div>
