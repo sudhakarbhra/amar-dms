@@ -25,7 +25,7 @@
               <div class="form-group col-md-12 mb-4">
                 <input type="email" class="form-control input-lg" id="login_uname" aria-describedby="emailHelp" placeholder="Email address">
               </div>
-              <div class="form-groupc col-md-12 ">
+              <div class="form-group col-md-12 mb-4">
                   <div class="input-group input-group-merge input-group-alternative">
                    <input type="password" class="form-control input-lg pwd" id="login_pwd" placeholder="Password">
                     <span class="input-group-append">
@@ -34,20 +34,17 @@
                   </div>
                 </div>
 
-              <div class="form-group ">
-                
+             
+              <div class="form-group  col-md-12" id="otpInputContainer" style="display: none;">
+                  <label>OTP has been sent you your phone number,</label>
+                  <input type="tel" placeholder="Enter your OTP here" id="otpInput" onkeyup="verifyOTP(this.value)" maxlength="4" name="otp" class="form-control mb-3 text-center" />
               </div>
-              <div class="col-md-12">
-                <div class="d-flex my-2 justify-content-between">
-                  <div class="d-inline-block mr-3">
-                    <label class="control control-checkbox">Remember me
-                      <input type="checkbox" />
-                      <div class="control-indicator"></div>
-                    </label>
+                        
 
-                  </div>
-                </div>
-                <button type="button" id="login_submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
+
+              <div class="col-md-12">
+                <button type="button"  id="OTP_submit" class="btn btn-lg btn-primary btn-block mb-4">Get OTP</button>
+                <button type="button" style="display: none;" id="login_submit" class="btn btn-lg btn-primary btn-block mb-4">Sign In</button>
               </div>
             </div>
           </form>

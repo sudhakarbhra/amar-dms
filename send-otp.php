@@ -21,51 +21,50 @@ $senderId = "SAMRBK";
 
 // Generating OTP
 $opt = mt_rand(1000,9999);
-echo $opt;
 
-// //Your message to send, Add URL encoding here.
-// $message = urlencode("Welcome to Sri Amar Bikes, You OTP is ".$opt.". Enter this to get EMI Information");
+//Your message to send, Add URL encoding here.
+$message = urlencode("Welcome to Sri Amar Bikes, You OTP is ".$opt.". Enter this to get EMI Information");
 
-// //Define route 
-// $route = 4;
-// //Prepare you post parameters
-// $postData = array(
-//     'authkey' => $authKey,
-//     'mobiles' => $mobileNumber,
-//     'message' => $message,
-//     'sender' => $senderId,
-//     'route' => $route
-// );
+//Define route 
+$route = 4;
+//Prepare you post parameters
+$postData = array(
+    'authkey' => $authKey,
+    'mobiles' => $mobileNumber,
+    'message' => $message,
+    'sender' => $senderId,
+    'route' => $route
+);
 
-// //API URL
-// $url="http://api.msg91.com/api/sendhttp.php";
+//API URL
+$url="http://api.msg91.com/api/sendhttp.php";
 
-// // init the resource
-// $ch = curl_init();
-// curl_setopt_array($ch, array(
-//     CURLOPT_URL => $url,
-//     CURLOPT_RETURNTRANSFER => true,
-//     CURLOPT_POST => true,
-//     CURLOPT_POSTFIELDS => $postData
-//     //,CURLOPT_FOLLOWLOCATION => true
-// ));
-
-
-// //Ignore SSL certificate verification
-// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+// init the resource
+$ch = curl_init();
+curl_setopt_array($ch, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $postData
+    //,CURLOPT_FOLLOWLOCATION => true
+));
 
 
-// //get response
-// $output = curl_exec($ch);
+//Ignore SSL certificate verification
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
-// //Print error if any
-// if(curl_errno($ch))
-// {
-//     echo 'error:' . curl_error($ch);
-// }
 
-// curl_close($ch);
+//get response
+$output = curl_exec($ch);
+
+//Print error if any
+if(curl_errno($ch))
+{
+    echo 'error:' . curl_error($ch);
+}
+
+curl_close($ch);
 
 // // echo $output;
 
@@ -102,6 +101,7 @@ $otpsent = true;
                                     <button type="submit" class="btn btn-primary">Verify</button>
                                 </div>
                             </div>
+                        </div>
                         </div>
                 </form>
             </div>
