@@ -95,7 +95,7 @@ $otpsent = true;
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>OTP has been sent you your phone number,</label>
-                                <input type="text" placeholder="Enter your OTP here" maxlength="4" name="otp" class="form-control mb-3 text-center" />
+                                <input type="tel" placeholder="Enter your OTP here" maxlength="4" name="otp" class="form-control mb-3 text-center" />
                                 <input type="hidden" name="opt1" value="<?=$opt?>" />
                                 <input type="hidden" name="ph" value="<?=$mobileNumber?>" />
                                 <div class="row justify-content-center">
