@@ -19,7 +19,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">+91</span>
                         </div>
-                        <input type="text" class="form-control" name="ph" placeholder="Phone Number">
+                        <input type="tel" class="form-control" name="ph" placeholder="Phone Number">
                     </div>
                     <div class="row justify-content-center ">
                         <button class="btn btn-outline-danger btn-sm" type="submit" id="button-addon1">Get Customer Info

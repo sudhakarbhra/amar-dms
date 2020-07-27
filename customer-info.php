@@ -255,7 +255,7 @@ exit();
                                     <span class="input-group-text py-1" id="basic-addon1">₹</span>
                                 </div>
                                 <input type="hidden" name="ph" value="<?=$_POST[" ph"]?>">
-                                <input type="text" class="form-control form-control-sm w-100" name="pay" placeholder="Enter Amount">
+                                <input type="tel" class="form-control form-control-sm w-100" name="pay" placeholder="Enter Amount">
                             </div>
                             <button class="btn btn-sm btn-outline-success" type="submit" id="button-addon1">Pay Now ></button>
                         </form>
