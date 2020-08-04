@@ -19,7 +19,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">+91</span>
                         </div>
-                        <input type="tel" class="form-control" name="ph" placeholder="Phone Number">
+                        <input type="tel" required class="form-control" name="ph" placeholder="Phone Number">
                     </div>
                     <div class="row justify-content-center ">
                         <button class="btn btn-outline-danger btn-sm" type="submit" id="button-addon1">GET EMI INFO
@@ -35,7 +35,7 @@
                             <br/>
                             <h6>Note:</h6>
                             <ul style="padding-left: 20px;" >
-                                <li style="list-style-type: circle;">Please Pay Your Emi Ondate to avoid late payment.</li>
+                                <li style="list-style-type: circle;">Please Pay Your Emi On-date to avoid late payment.</li>
                                 <li style="list-style-type: circle;">Late payment additional charges please avoid it.</li>
                                 <li style="list-style-type: circle;">Please share compulsory your screenshot of successful transaction to us.</li>
                             </ul>

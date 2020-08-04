@@ -250,7 +250,7 @@ if(empty($datas)){
                                 </div>
 
 
-                                <input type="tel" class="form-control form-control-sm w-100" name="pay"
+                                <input type="tel" required class="form-control form-control-sm w-100" name="pay"
                                     placeholder="Enter Amount">
                             </div>
                             <input type="hidden" name="vehicle_no" value="<?=$data["vehicle_no"]?>">
@@ -267,13 +267,13 @@ if(empty($datas)){
                     <?php if($master) { ?>
                     <a target="_blank"
                         href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["emi_amount"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["finance_company"]?>&cu=INR"
-                        class="mt-2 card-footer bg-primary text-white text-center">PAY ₹
+                        class="mt-2 card-footer bg-primary text-white text-center">PAY FULL AMOUNT ₹
                         <?=$data["emi_amount"]?> /-
                     </a>
                     <?php } else {?>
                     <a target="_blank"
                         href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["company"]?>&cu=INR"
-                        class="mt-2 card-footer bg-primary text-white text-center">PAY ₹
+                        class="mt-2 card-footer bg-primary text-white text-center">PAY FULL AMOUNT ₹
                         <?=$data["total_pay"]?> /-
                     </a>
                     <?php } ?>
