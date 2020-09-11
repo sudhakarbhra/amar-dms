@@ -12,16 +12,16 @@ $c = 0;
 while(($filesop = fgetcsv($handle, 1000, ",")) !== false)
 {
 $finance_company = $filesop[0];
-		$upi_id = $filesop[1];
-		$agreement_date = $filesop[2];
-		$mobile = $filesop[3];
-		$vehicle_no = $filesop[4];
-		$customer = $filesop[5];
-		$vehicle_type = $filesop[6];
-		$emi_amount = $filesop[7];
-		$due_date = $filesop[8];
+        $upi_id = $filesop[1];
+        $agreement_date = $filesop[2];
+        $mobile = $filesop[3];
+        $vehicle_no = $filesop[4];
+        $customer = $filesop[5];
+        $vehicle_type = $filesop[6];
+        $emi_amount = $filesop[7];
+        $due_date = $filesop[8];
 $database->insert("CUSTOMER_MASTER", [
-	"finance_company" => cleanMe($finance_company),
+    "finance_company" => cleanMe($finance_company),
 "upi_id" => cleanMe($upi_id),
 "agreement_date" => cleanMe($agreement_date),
 "mobile" => cleanMe($mobile),
@@ -45,7 +45,6 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
 
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
     <?php include "./views/shared/page-spinner.php"; ?>
-
     <div class="wrapper">
         <?php include "./views/shared/side-bar.php"; ?>
         <div class="page-wrapper">
@@ -62,11 +61,9 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
                                             <input type="file" name="file" id="file" size="150">
                                             <p class="help-block">Only Excel/CSV File Import.</p>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" name="submit"
-                                            value="submit">Upload</button>
+                                        <button type="submit" class="btn btn-primary" name="submit" value="submit">Upload</button>
                                     </form>
-                                    <a href="<?=BASE_URL?>assets/CUSTOMER_MASTER.csv" target="_blank"
-                                        download="download"> Download Sample File</a>
+                                    <a href="<?=BASE_URL?>assets/CUSTOMER_MASTER.csv" target="_blank" download="download"> Download Sample File</a>
                                 </div>
                             </div>
                         </div>
@@ -75,39 +72,67 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-default">
-                                <div class="card-body">
+                                <div class="card-body" style="overflow-x: scroll;">
                                     <table id="data-table" class="table display nowrap" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>finance_company</th>
-                                                <th>upi_id</th>
-                                                <th>agreement_date</th>
-                                                <th>mobile</th>
-                                                <th>vehicle_no</th>
-                                                <th>customer</th>
-                                                <th>vehicle_type</th>
-                                                <th>emi_amount</th>
-                                                <th>due_date</th>
+                                                <th>Views</th>
+                                                <th>Last Seen</th>
+                                                <th>Finance</th>
+                                                <th>Upi</th>
+                                                <th>Agreement Date</th>
+                                                <th>Mobile</th>
+                                                <th>Vehicle no</th>
+                                                <th>Customer</th>
+                                                <th>Vehicle</th>
+                                                <th>Emi</th>
+                                                <th>Due </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach($datas as $data){ ?>
                                             <tr>
-                                                <td><a target="_blank"
-                                                        href="https://wa.me/<?=cleanMe($data["mobile"])?>?text=This%20is%20an%20reminder%20from%20Sri%20Amar%20Bikes <?=BASE_URL?>pay-link.php?ph=<?=$data["mobile"]?>"
+                                                <td><a target="_blank" href="https://wa.me/<?=cleanMe($data[" mobile"])?>?text=This%20is%20an%20reminder%20from%20Sri%20Amar%20Bikes
+                                                        <?=BASE_URL?>pay-link.php?ph=
+                                                        <?=$data["mobile"]?>"
                                                         class="btn btn-success btn-sm">
                                                         <i class="mdi mdi-whatsapp"></i>
                                                     </a></td>
-                                                <td><?=$data["finance_company"]?></td>
-                                                <td><?=$data["upi_id"]?></td>
-                                                <td><?=$data["agreement_date"]?></td>
-                                                <td><?=$data["mobile"]?></td>
-                                                <td><?=$data["vehicle_no"]?></td>
-                                                <td><?=$data["customer"]?></td>
-                                                <td><?=$data["vehicle_type"]?></td>
-                                                <td><?=$data["emi_amount"]?></td>
-                                                <td><?=$data["due_date"]?></td>
+                                                <td>
+                                                    <a href="./activity.php?ph=<?=$data['mobile']?>" class="badge badge-sm badge-primary">
+                                                        <?=$data["views"]?></a>
+                                                </td>
+                                                <td>
+                                                    <?=date_format(date_create($data["updatedAt"]), "M d h:m a");?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["finance_company"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["upi_id"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["agreement_date"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["mobile"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["vehicle_no"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["customer"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["vehicle_type"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["emi_amount"]?>
+                                                </td>
+                                                <td>
+                                                    <?=$data["due_date"]?>
+                                                </td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
@@ -117,7 +142,6 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
                         </div>
                     </div>
                     <!--//////////////////////////////////////////////// -->
-
                 </div>
                 <?php include "./views/shared/right-bar.php"; ?>
             </div>

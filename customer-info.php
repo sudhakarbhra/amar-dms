@@ -2,24 +2,27 @@
 require_once "./app/config.php";
 $master = false;
 if(!empty($_POST)){
+    // CHECKING IF OTP MATCH
+    if($_POST["otp"] == $_POST["opt1"]){ $otpVerified = true;
+        $phone = $_POST["ph"];
+        // CHECKING IF THE USER IS COLLECTION_LIST
+        $datas = $database->select("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_POST["ph"])]);
+        if(empty($datas)){
+            // CHECKING IF THE USER IN CUSTOMER MASTER IF IT ISN'T IN CUSTOMER_LIST
+            $datas = $database->select("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_POST["ph"])]);
+            // INCREMENTING VIEWS OF THIS USER
+            $database->query("UPDATE `CUSTOMER_MASTER` SET `views` = views+1  WHERE mobile = $phone ");
+            $master = true;
+        }else{
+            // INCREMENTING VIEWS OF THIS USER
+            $database->query("UPDATE `COLLECTION_LIST` SET `views` = views+1  WHERE customer_mobile = $phone ");
+        }
+    }else{$otpVerified = false;}
 
-// CHECKING IF OTP MATCH
-if($_POST["otp"] == $_POST["opt1"]){ $otpVerified = true;
 
-
-$datas = $database->select("COLLECTION_LIST", "*", ["customer_mobile" => cleanMe($_POST["ph"])]);
-if(empty($datas)){
-    $datas = $database->select("CUSTOMER_MASTER", "*", ["mobile" => cleanMe($_POST["ph"])]);
-    $master = true;
+    // TO TRACK HOW MAY TIMES A USER ACCESS THIS PAGE
+    $database->insert("ACTIVITY", ["phone" => $_POST["ph"]] );
 }
-
-}else{$otpVerified = false;}
-
-
-
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -40,7 +43,6 @@ if(empty($datas)){
         <div class="row justify-content-center  ">
             <div class="col-xs-12 col-md-6">
                 <!-- FORM -->
-
                 <?php if(!empty($_POST) && !empty($_POST["ph"]) && $otpVerified){  ?>
                 <?php foreach($datas as $data ){ ?>
                 <div class="card mb-4">
@@ -242,18 +244,14 @@ if(empty($datas)){
                         </div>
                         <form method="POST" action="./upi-pay.php" class="mt-2">
                             <label>Partial Amount </label>
-
-
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend ">
                                     <span class="input-group-text py-1" id="basic-addon1">₹</span>
                                 </div>
-
-
-                                <input type="tel" required class="form-control form-control-sm w-100" name="pay"
-                                    placeholder="Enter Amount">
+                                <input type="tel" required class="form-control form-control-sm w-100" name="pay" placeholder="Enter Amount">
                             </div>
                             <input type="hidden" name="vehicle_no" value="<?=$data["vehicle_no"]?>">
+                            <input type="hidden" name="phone" value="<?=$_POST["ph"]?>">
                             <input type="hidden" name="upi_id" value="<?=$data["upi_id"]?>">
                             <?php if($master){ ?>
                             <input type="hidden" name="company" value="<?=$data["finance_company"]?>">
@@ -264,21 +262,31 @@ if(empty($datas)){
                                 ></button>
                         </form>
                     </div>
-                    <?php if($master) { ?>
-                    <a target="_blank"
-                        href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["emi_amount"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["finance_company"]?>&cu=INR"
-                        class="mt-2 card-footer bg-primary text-white text-center">PAY FULL AMOUNT ₹
-                        <?=$data["emi_amount"]?> /-
-                    </a>
-                    <?php } else {?>
-                    <a target="_blank"
-                        href="upi://pay?pa=<?=$data["upi_id"]?>&pn=SRI%20AMAR%20BIKED&am=<?=$data["total_pay"]?>&tr=AMAR2020&tn=<?=$data["vehicle_no"]?>%20<?=$data["company"]?>&cu=INR"
-                        class="mt-2 card-footer bg-primary text-white text-center">PAY FULL AMOUNT ₹
-                        <?=$data["total_pay"]?> /-
-                    </a>
-                    <?php } ?>
+                    <!-- FULL AMOUNT PAYMENT START -->
+                    <form method="POST" action="./upi-pay.php">
+                        <input type="hidden" name="vehicle_no" value="<?=$data["vehicle_no"]?>">
+                        <input type="hidden" name="phone" value="<?=$_POST["ph"]?>">
+                        <input type="hidden" name="upi_id" value="<?=$data["upi_id"]?>">
+                        <?php if($master){ ?>
+                        <input type="hidden" name="pay" value="<?=$data["emi_amount"]?>">
+                        <input type="hidden" name="company" value="<?=$data["finance_company"]?>">
+                        <input type="hidden" name="role" value="MASTER">
+                        <?php }else{ ?>
+                        <input type="hidden" name="pay" value="<?=$data["total_pay"]?>">
+                        <input type="hidden" name="company" value="<?=$data["company"]?>">
+                        <input type="hidden" name="role" value="CUSTOMER">
+                        <?php }?>
+                        <button class="mt-2 card-footer bg-primary w-100 text-white text-center" type="submit" id="button-addon1">
+                            PAY FULL AMOUNT ₹
+                            <?php if($master){ ?>
+                            <?=$data["emi_amount"]?> /-
+                            <?php }else{ ?>
+                            <?=$data["total_pay"]?> /-
+                            <?php }?>
+                        </button>
+                    </form>
+                    <!-- FULL AMOUNT PAYMENT END -->
                 </div>
-
                 <?php  } ?>
                 <div class="d-flex justify-content-center">
                     <?php if($master) { ?>
@@ -292,7 +300,7 @@ if(empty($datas)){
                     <a target="_blank" href="https://wa.me/+919994778985?text=<?=$data["customer_mobile"]?>
                         <?=$data["vehicle_no"]?>
                         <?=$data["customer_name"]?>
-                        <?=$data["vehicle_type"]?>" class="btn  btn-sm btn-success my-4">
+                        <?=$data["vehicle_type"]?>" class="btn btn-sm btn-success my-4">
                         <i class="mdi mdi-whatsapp text-bold mb-2"></i> Contact Sri Amar Bikes
                     </a>
                 </div>
@@ -305,7 +313,6 @@ if(empty($datas)){
                         <a class="btn btn-info btn-sm" href="./pay-link.php">click here to try again</a>
                     </div>
                 </div>
-
                 <?php } ?>
             </div>
         </div>
