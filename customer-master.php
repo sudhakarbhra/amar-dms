@@ -100,8 +100,12 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
                                                         <i class="mdi mdi-whatsapp"></i>
                                                     </a></td>
                                                 <td>
+                                                    <?php if(!empty($data["views"])) { ?>
                                                     <a href="./activity.php?ph=<?=$data['mobile']?>" class="badge badge-sm badge-primary">
                                                         <?=$data["views"]?></a>
+                                                         <?php }else{ ?>
+N/A
+                                                    <?php } ?>
                                                 </td>
                                                 <td>
                                                     <?=date_format(date_create($data["updatedAt"]), "M d h:m a");?>
