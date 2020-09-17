@@ -101,7 +101,7 @@ $datas = $database->select("CUSTOMER_MASTER", "*")
                                                     </a></td>
                                                 <td>
                                                     <?php if(!empty($data["views"])) { ?>
-                                                    <a href="./activity.php?ph=<?=$data['mobile']?>" class="badge badge-sm badge-primary">
+                                                    <a href="./activity.php?ph=<?=$data['mobile']?>" class="badge badge-sm badge-danger">
                                                         <?=$data["views"]?></a>
                                                          <?php }else{ ?>
 N/A

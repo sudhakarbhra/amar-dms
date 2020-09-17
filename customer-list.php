@@ -126,7 +126,7 @@ $datas = $database->select("COLLECTION_LIST", "*")
                                                 <td>
 
                                                     <?php if(!empty($data["views"])) { ?>
-                                                    <a href="./activity.php?ph=<?=$data['customer_mobile']?>" class="badge badge-sm badge-primary">
+                                                    <a href="./activity.php?ph=<?=$data['customer_mobile']?>" class="badge badge-sm badge-danger">
                                                         <?=$data["views"]?></a>
                                                     <?php }else{ ?>
 N/A
